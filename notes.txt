@@ -1,0 +1,27 @@
+# Django Rest Framework http only cookies and CSRF 
+
+https://dev.to/briancaffey/how-to-authenticate-django-rest-framework-api-calls-from-a-vue-js-client-using-session-authentication-and-httponly-cookies-817
+https://yoongkang.com/blog/cookie-based-authentication-spa-django/
+https://dj-rest-auth.readthedocs.io/en/latest/installation.html?highlight=cookie#json-web-token-jwt-support-optional
+
+# Configure dj-rest-auth
+https://www.rootstrap.com/blog/registration-and-authentication-in-django-apps-with-dj-rest-auth/
+https://stackoverflow.com/questions/57832249/django-rest-auth-userprofile-with-this-email-address-already-exists-in-login
+
+# HTTP only cookkie middleware fix for dj-rest-auth
+https://stackoverflow.com/questions/56587690/django-rest-framework-using-httponly-cookie
+
+# DRF + Vue CSRF settings
+https://www.pydanny.com/drf-jwt-axios-vue.html
+
+# Using Vue and Vuex for API calls
+
+https://medium.com/hackernoon/jwt-authentication-in-vue-js-and-django-rest-framework-part-2-788f0ad53ad5
+https://www.digitalocean.com/community/tutorials/handling-authentication-in-vue-using-vuex
+
+
+# web sockets with django channels
+https://channels.readthedocs.io/en/stable/installation.html
+
+# NGINX with CORS
+https://gist.github.com/chrisallenlane/6367574

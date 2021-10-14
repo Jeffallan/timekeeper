@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:11.6
+    restart: unless-stopped
+    volumes: 
+      - ./db:/db
+  web:
+    restart: unless-stopped
+    environment:
+      - DJANGO_SECRET_KEY=local
+    image: web
+    build:
+      context: .
+      dockerfile: ./backend/containers/RestDockerFile
+    command: >
+      bash -c "python wait_for_postgres.py &&
+               ./manage.py migrate &&
+               ./manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/code/
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    env_file: 
+      - .ENV
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.0
+    expose:
+      - 1025
+      - 8025
+    ports:
+        - "8025:8025"
+        - "1025:1025"
+    restart: unless-stopped
+
+  frontend:
+    image: node:15.6.0-alpine3.12
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/code/
+    env_file: 
+      - .ENV
+    restart: unless-stopped
+    working_dir: /code/frontend
+    stdin_open: true
+    entrypoint: "/bin/sh"
+    command: "-c \"if [ ! -d \"node_modules\" ]; then npm i; fi; npm run serve \""
+
