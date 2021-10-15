@@ -25,11 +25,11 @@ class UserManager(BaseUserManager):
     user = self.model(
         email=email,
         role=role,
-        is_staff=is_staff, 
+        is_staff=is_staff,
         is_active=active,
-        is_superuser=is_superuser, 
+        is_superuser=is_superuser,
         last_login=now,
-        date_joined=now, 
+        date_joined=now,
         **extra_fields
     )
     user.set_password(password)
@@ -37,7 +37,7 @@ class UserManager(BaseUserManager):
     return user
 
   def create_user(self, email, password, role,**extra_fields):
-    
+
     return self._create_user(email, password, role, False, False, False, **extra_fields)
 
   def create_superuser(self, email, password, role=UserChoice.Maintenance.value, **extra_fields):
