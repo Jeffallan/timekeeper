@@ -44,6 +44,7 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = ['role',]
 
 class AdminUserSerializer(serializers.ModelSerializer):
-    model = User
-    fields = ["id", "first_name", "last_name", "full_name", "email", "role"]
+    class Meta:
+        model = User
+        fields = ["id", "first_name", "last_name", "full_name", "email", "role"]
 

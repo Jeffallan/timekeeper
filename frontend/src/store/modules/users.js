@@ -1,6 +1,7 @@
 import axios from 'axios'
-import { LOGIN, ME } from "@/util/constants/Urls"
-import Router from "@/router/index"
+import Router from "src/router/index"
+import { LOGIN, ME } from "src/util/constants/Urls"
+
 
 const state = () => ({
     status:  "",

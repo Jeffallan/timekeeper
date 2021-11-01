@@ -24,7 +24,8 @@ class Common(Configuration):
         'rest_framework.authtoken',  # token authentication
         'django_filters',            # for filtering rest endpoints
         'djoser',
-        'corsheaders', 
+        'corsheaders',
+        'dry_rest_permissions',
 
         # Your apps
         'api.apps.users',
@@ -42,7 +43,7 @@ class Common(Configuration):
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
     )
-    
+
     ALLOWED_HOSTS = ["*"]
     ROOT_URLCONF = 'api.urls'
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
@@ -203,7 +204,10 @@ class Common(Configuration):
             'rest_framework.authentication.SessionAuthentication',
             'rest_framework.authentication.TokenAuthentication',
             'rest_framework_simplejwt.authentication.JWTAuthentication',
-        )
+        ),
+        'DEFAULT_FILTER_BACKENDS': (
+            'django_filters.rest_framework.DjangoFilterBackend',
+        ),
     }
 
     # JWT Settings

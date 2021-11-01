@@ -12,14 +12,14 @@
                 {{u.name}}
               </router-link>
           </b-nav-item>
-          
+
           <b-nav-item class=text-center
             v-if="role">
               <router-link :to="urls[0].path"
               @click.native="logout"
               >Log Out</router-link>
           </b-nav-item>
-          
+
           <!--
             <b-button v-if="sessionStorage.getItem("token")" variant="outline-light">logout</b-button>
           -->
@@ -27,7 +27,7 @@
     </b-collapse> 
 </b-navbar>
 
-    
+
 </template>
 
 <script>
@@ -47,7 +47,7 @@ export default {
                 { name: 'About', path: '/about', },
                 { name: 'Viewer', path: '/viewer', }
            ],
-            
+
           }
         },
         methods: {

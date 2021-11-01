@@ -13,3 +13,19 @@ class IsUserOrReadOnly(permissions.BasePermission):
         if request.user.is_staff:
             return True
         return obj == request.user
+
+class IsAdmin(permissions.BasePermission):
+
+    def has_permission(self, request, view):
+        return request.user.role == 1
+
+
+class IsStaff(permissions.BasePermission):
+
+    def has_permission(self, request, view):
+        return request.user.role == 2
+
+class IsUser(permissions.BasePermission):
+
+    def has_permission(self, request, view):
+        return request.user.role == 3

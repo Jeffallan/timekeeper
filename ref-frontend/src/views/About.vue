@@ -23,18 +23,13 @@ export default {
   components: {
     //LorIp,
   },
-  // data: () => {
-  //   return {
-  //     user: USER,
-  //   }
-  // },
   computed: {
     user ()  {
       //if (Object.keys(this.$store.state.users.user) == 0){
       //  this.$store.dispatch("users/getUserDetails")
       //} 
       return this.$store.state.users.user
-      
+
     },
     token () {
       return this.$store.state.users.token
@@ -42,7 +37,7 @@ export default {
     status () {
       return this.$store.state.users.status
     }
-  } 
-  
+  }
+
 }
 </script>

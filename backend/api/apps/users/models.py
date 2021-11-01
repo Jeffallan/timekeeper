@@ -2,8 +2,10 @@ from django.db import models
 from django.conf import settings
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.utils.translation import gettext_lazy as _
 #from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -19,7 +21,9 @@ class UserManager(BaseUserManager):
   # TODO raise value errors for first name and last name?
   def _create_user(self, email, password, role, is_staff, is_superuser, active, **extra_fields):
     if not email:
-        raise ValueError('Users must have an email address')
+        raise ValidationError(_("Email field is required."))
+    if role < self.request.user.role.value:
+        raise ValidationError(_("Users may not create users with higher permissions than themselves."))
     now = timezone.now()
     email = self.normalize_email(email)
     user = self.model(
@@ -63,12 +67,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(null=True, blank=True)
     role = models.PositiveSmallIntegerField(choices=[(x.value, x.name) for x in UserChoice]
                                           , default=UserChoice.Audience.value)
-    
 
     USERNAME_FIELD = 'email'
     EMAIL_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name' ]
-   
 
     objects = UserManager()
 
