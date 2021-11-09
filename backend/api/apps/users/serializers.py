@@ -23,7 +23,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
                                           role = validated_data["role"],
                                        )
         user.set_password(password)
-        user.save() # required to issue a valid auth token for user activation and password resets 
+        user.save() # required to issue a valid auth token for user activation and password resets
         return user
 
     class Meta:

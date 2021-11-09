@@ -1,13 +1,13 @@
 import axios from 'axios'
-import Router from "src/router/index"
-import { LOGIN, ME } from "src/util/constants/Urls"
-
+import { LOGIN, ME } from "@/util/constants/Urls"
+import Router from "@/router/index"
 
 const state = () => ({
-    status:  "",
+    status:  null,
     token: "",
     user:  {}
   })
+
   const mutations = {
     auth_request(state){
       state.status = "loading"
@@ -21,7 +21,7 @@ const state = () => ({
       state.status = "error"
     },
     logout(state){
-      state.status = ""
+      state.status = null
       state.token = ""
       state.user = {}
     },
@@ -30,7 +30,7 @@ const state = () => ({
     }
   }
   const actions =  {
-    login({commit, dispatch}, data){
+    login({commit, dispatch}, data) {
       return new Promise((resolve, reject) => {
         commit("auth_request")
         axios({url: LOGIN, data: data, method: "POST"})
@@ -45,7 +45,7 @@ const state = () => ({
         })
         .catch(e => {
           commit("auth_error")
-          //sessionStorage.removeItem("token")
+          sessionStorage.removeItem("token")
           reject(e)
         })
       })

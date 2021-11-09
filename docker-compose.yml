@@ -40,7 +40,7 @@ services:
   frontend:
     image: node:15.6.0-alpine3.12
     ports:
-      - 8080:8080
+      - 3000:3000
     volumes:
       - ./frontend:/code/
     env_file: 

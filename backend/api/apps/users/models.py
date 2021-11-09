@@ -22,8 +22,8 @@ class UserManager(BaseUserManager):
   def _create_user(self, email, password, role, is_staff, is_superuser, active, **extra_fields):
     if not email:
         raise ValidationError(_("Email field is required."))
-    if role < self.request.user.role.value:
-        raise ValidationError(_("Users may not create users with higher permissions than themselves."))
+    #if role < self.request.user.role.value:
+    #    raise ValidationError(_("Users may not create users with higher permissions than themselves."))
     now = timezone.now()
     email = self.normalize_email(email)
     user = self.model(
