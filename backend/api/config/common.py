@@ -4,7 +4,6 @@ from distutils.util import strtobool
 import dj_database_url
 from configurations import Configuration
 
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -26,6 +25,7 @@ class Common(Configuration):
         'djoser',
         'corsheaders',
         'dry_rest_permissions',
+        'phonenumber_field',
 
         # Your apps
         'api.apps.users',

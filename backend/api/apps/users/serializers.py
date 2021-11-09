@@ -16,8 +16,6 @@ class CreateUserSerializer(serializers.ModelSerializer):
             password = get_random_string()
 
         user = User.objects.create_user(
-                                          first_name = validated_data['first_name'], 
-                                          last_name = validated_data['last_name'],
                                           email = validated_data['email'],
                                           password = password,
                                           role = validated_data["role"],
@@ -28,7 +26,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'password', 'first_name', 'last_name', 'email',  'role') # 'role' 'auth_token',
+        fields = ('id', 'password',  'email',  'role') # 'role' 'auth_token',
         #read_only_fields = ('auth_token',)
         extra_kwargs = {'password': {'write_only': True}}
 
@@ -40,11 +38,12 @@ class CreateUserSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "first_name", "last_name", "full_name", "email", "role"]
+        fields = ["id", "email", "role"]
         read_only_fields = ['role',]
 
 class AdminUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "first_name", "last_name", "full_name", "email", "role"]
+        fields = ["id", "email", "role", "has_joined"]
+        read_only_fields = ["has_joined"]
 

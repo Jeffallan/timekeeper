@@ -11,6 +11,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.crypto import get_random_string
 from api.apps.core.util.users import UserChoice
+from api.apps.core.models import ContactInfoModel
 
 
 # https://medium.com/@ksarthak4ever/django-custom-user-model-allauth-for-oauth-20c84888c318
@@ -18,7 +19,6 @@ from api.apps.core.util.users import UserChoice
 
 class UserManager(BaseUserManager):
 
-  # TODO raise value errors for first name and last name?
   def _create_user(self, email, password, role, is_staff, is_superuser, active, **extra_fields):
     if not email:
         raise ValidationError(_("Email field is required."))
@@ -44,21 +44,15 @@ class UserManager(BaseUserManager):
 
     return self._create_user(email, password, role, False, False, False, **extra_fields)
 
-  def create_superuser(self, email, password, role=UserChoice.Maintenance.value, **extra_fields):
+  def create_superuser(self, email, password, role=UserChoice.Contractor.value, **extra_fields):
     user=self._create_user(email, password, role, True, True, True, **extra_fields)
     user.save(using=self._db)
     return user
 
 
-
-
-
 class User(AbstractBaseUser, PermissionsMixin):
 
-
     email = models.EmailField(max_length=254, unique=True)
-    first_name = models.CharField(max_length=254)
-    last_name = models.CharField(max_length=254)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
@@ -66,20 +60,27 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_login = models.DateTimeField(null=True, blank=True)
     date_joined = models.DateTimeField(null=True, blank=True)
     role = models.PositiveSmallIntegerField(choices=[(x.value, x.name) for x in UserChoice]
-                                          , default=UserChoice.Audience.value)
+                                          , default=UserChoice.Subcontractor.value)
 
     USERNAME_FIELD = 'email'
     EMAIL_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name' ]
 
     objects = UserManager()
 
     def __str__(self):
-        return self.full_name
+        return self.email
+
+    def get_absolute_url(self):
+        return reverse("users:detail", kwargs={"pk": self.pk})
+
+class Profile(ContactInfoModel):
+    first_name = models.CharField(max_length=254)
+    last_name = models.CharField(max_length=254)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
 
     @property
     def full_name(self):
         return "{} {}".format(self.first_name, self.last_name)
 
-    def get_absolute_url(self):
-        return reverse("users:detail", kwargs={"pk": self.pk})
+    def __str__(self):
+      return self.full_name

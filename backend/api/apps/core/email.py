@@ -27,10 +27,13 @@ class ConfirmationEmail(BaseEmailMessage):
 class PasswordResetEmail(BaseEmailMessage):
     template_name = "emails/password_reset.html"
 
-    def get_context_data(self):
+    def get_context_data(self, usr=None):
         # PasswordResetEmail can be deleted
         context = super().get_context_data()
-        user = context.get("user")
+        if self.user:
+            user = self.user
+        else:
+            user = context.get("user")
         context["uid"] = utils.encode_uid(user.pk)
         context["token"] = default_token_generator.make_token(user)
         context["url"] = settings.PASSWORD_RESET_CONFIRM_URL.format(**context)
