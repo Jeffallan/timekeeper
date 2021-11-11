@@ -27,7 +27,7 @@ export default {
     user ()  {
       //if (Object.keys(this.$store.state.users.user) == 0){
       //  this.$store.dispatch("users/getUserDetails")
-      //} 
+      //}
       return this.$store.state.users.user
 
     },

@@ -36,8 +36,8 @@ const state = () => ({
         axios({url: LOGIN, data: data, method: "POST"})
         .then(r => {
           const token = r.data.auth_token
-          //sessionStorage.setItem("token", token)
-          axios.defaults.headers.common['Authorization'] = `Token ${token}`
+          //axios.defaults.headers.common['Authorization'] = `Token ${token}`
+          //this.$http.defaults.headers.common['Authorization'] = `Token ${token}`
           commit("auth_success", token)
           dispatch("getUserDetails")
           Router.push("/about")

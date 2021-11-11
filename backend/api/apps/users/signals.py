@@ -17,6 +17,4 @@ def create_profile(sender, instance, created, **kwargs):
 def set_initail_password(sender, user, request, **kwargs):
     mail = PasswordResetEmail()
     mail.user = user
-    #mail = mail.get_context_data(usr=user)
-    #print(user, vars(user), vars(request), vars(mail), sep="\n")
     mail.send(to=[user.email])

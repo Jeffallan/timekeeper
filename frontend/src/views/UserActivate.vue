@@ -1,7 +1,19 @@
 <template>
     <div>
+        <b-card v-if="show"
+            title="Activation Successful">
+            <b-card-text>
+                Please check your email to complete your account creation.
+            </b-card-text>
+        </b-card>
+        <b-card v-if="showError"
+            title="Activation Error"
+            class="mx-3 text-center">
+            <b-card-text>
+                There was a problem activating your account. Please contact your administrator.
+            </b-card-text>
+        </b-card>
         <h1 v-if="show">SUCCESS</h1>
-        <h1 v-if=showError>Token Expired</h1>
     </div>
 </template>
 

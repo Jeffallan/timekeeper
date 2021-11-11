@@ -76,11 +76,33 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Profile(ContactInfoModel):
     first_name = models.CharField(max_length=254)
     last_name = models.CharField(max_length=254)
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    user = models.OneToOneField(to=User, on_delete=models.CASCADE)
 
     @property
     def full_name(self):
         return "{} {}".format(self.first_name, self.last_name)
 
     def __str__(self):
-      return self.full_name
+        return self.full_name
+
+    @staticmethod
+    def has_read_permission(request):
+        return True
+
+    def has_object_read_permission(self, request):
+        return request.user == self.user or request.user.role == 1
+
+    @staticmethod
+    def has_write_permission(request):
+        return True
+
+    @staticmethod
+    def has_create_permission(request):
+        return False
+
+    def has_object_write_permission(self, request):
+        #return request.user == self.user or request.user.role == 1
+        return False
+
+    def has_object_update_permission(self, request):
+        return request.user == self.user or request.user.role == 1

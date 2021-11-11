@@ -9,5 +9,5 @@ export const PASSWORD_CONFIRM = `${BACKEND_BASE}auth/users/reset_password_confir
 export const USER_ACTIVATE = `${BACKEND_BASE}auth/users/activation/`
 
 // USERS
-
 export const ME = `${BACKEND_BASE}auth/users/me/`
+export const PROFILE = `${BACKEND_BASE}auth/users/profiles/`

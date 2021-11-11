@@ -25,6 +25,7 @@ class Common(Configuration):
         'djoser',
         'corsheaders',
         'dry_rest_permissions',
+        #'drf_writable_nested',
         'phonenumber_field',
 
         # Your apps

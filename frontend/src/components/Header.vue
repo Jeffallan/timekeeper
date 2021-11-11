@@ -20,11 +20,8 @@
               >Log Out</router-link>
           </b-nav-item>
 
-          <!--
-            <b-button v-if="sessionStorage.getItem("token")" variant="outline-light">logout</b-button>
-          -->
         </b-navbar-nav>
-    </b-collapse> 
+    </b-collapse>
 </b-navbar>
 
 
@@ -32,7 +29,6 @@
 
 <script>
 
-//import { routes } from "@/router/index"
 
 export default {
         name: "Header",
@@ -45,7 +41,8 @@ export default {
             urls: [
                 { name: 'Home', path: '/', },
                 { name: 'About', path: '/about', },
-                { name: 'Viewer', path: '/viewer', }
+                { name: 'Viewer', path: '/viewer' },
+                { name: 'Profile', path: 'profile' },
            ],
 
           }

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import store from "@/store/index"
+import axios from 'axios'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,12 @@ const routes = [
     meta: { requiresAuth: true },
   },
   {
+    path: "/profile",
+    name: "Profile",
+    component: () => import("../views/Profile.vue"),
+    meta: {requiresAuth: true}
+  },
+  {
   path: "/password-reset",
   name: "PasswordResetRequest",
   component: () => import ('../views/PasswordResetRequest.vue')
@@ -48,7 +55,7 @@ const routes = [
     path: '/404', component: () => import ('../views/error/NotFound.vue')
   },
   {
-    path: '*', redirect: '/404' 
+    path: '*', redirect: '/404'
   },
 
 ]

@@ -1,6 +1,9 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, Profile
 from django.utils.crypto import get_random_string
+#from drf_writable_nested.serializers import WritableNestedModelSerializer
+#from drf_writable_nested.mixins import UniqueFieldsMixin
+from rest_flex_fields import FlexFieldsModelSerializer
 
 
 class CreateUserSerializer(serializers.ModelSerializer):
@@ -38,12 +41,34 @@ class CreateUserSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "email", "role"]
-        read_only_fields = ['role',]
+        fields = ["id", "email", "role", "is_active"]
+        read_only_fields = ["role", "is_active", "email"]
 
 class AdminUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "email", "role", "has_joined"]
-        read_only_fields = ["has_joined"]
+        fields = ["id", "email", "role", "is_active", "role"]
+        read_only_fields = ["email",]
+
+class ProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    class Meta:
+        model = Profile
+        fields = ["first_name", "last_name", "address_1", "address_2", "city", "state", "zip_code", "user",]
+
+class AdminProfileSerializer(serializers.ModelSerializer):
+    user = AdminUserSerializer(read_only=True)
+    class Meta:
+        model = Profile
+        fields = ["first_name", "last_name", "address_1", "address_2", "city", "state", "zip_code", "user"]
+        #expandable_fields = {'user': AdminUserSerializer}
+        #read_only_fields = ["user"]
+
+    def update(self, data):
+        user = data.pop("user")
+        profile = data.pop("profile")
+        print(user, profile)
+        User.objects.update(**user)
+        Profile.update(**profile)
+        return profile
 

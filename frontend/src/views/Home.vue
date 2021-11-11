@@ -14,7 +14,6 @@ export default {
   name: 'Home',
   components: {
     Login,
-
   }
 }
 </script>

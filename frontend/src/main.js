@@ -5,15 +5,26 @@ import './plugins/bootstrap-vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Axios from 'axios'
+import axios from 'axios'
 
 Vue.config.productionTip = false
 
-Vue.prototype.$http = Axios;
-const token = sessionStorage.getItem('token')
-if (token) {
-  Vue.prototype.$http.defaults.headers.common['Authorization'] = `Token ${token}`
-}
+Vue.prototype.$http = axios;
+
+Vue.prototype.$http.interceptors.request.use(
+  config => {
+      const token = store.state.users.token
+      if (token) {
+          config.headers = Object.assign({
+              Authorization: `Token ${token}`
+          }, config.headers);
+      }
+      return config;
+  },
+  e => {
+      return Promise.reject(e);
+  }
+)
 
 new Vue({
   router,
