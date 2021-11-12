@@ -67,7 +67,6 @@ import { required, email } from "vuelidate/lib/validators"
           email: null,
           password: null,
         },
-
       }
     },
     computed: {

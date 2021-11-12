@@ -1,16 +1,17 @@
 <template>
     <div>
         <b-card v-if="show"
-            title="Activation Successful">
+            title="Success"
+            class="mx-3 text-center">
             <b-card-text>
-                Please check your email to complete your account creation.
+                Your email address has been changed successfully.
             </b-card-text>
         </b-card>
         <b-card v-if="showError"
-            title="Activation Error"
+            title="Error"
             class="mx-3 text-center">
             <b-card-text>
-                There was a problem activating your account. Please contact your administrator.
+                There was a problem while trying to change your email.
             </b-card-text>
         </b-card>
     </div>
@@ -18,10 +19,10 @@
 
 <script>
 import axios from "axios"
-import { USER_ACTIVATE } from "@/util/constants/Urls"
+import { USERNAME_RESET } from "@/util/constants/Urls"
 
 export default {
-    name: "UserActivate",
+    name: "UsernameReset",
     data () {
         return {
             uid: "",
@@ -32,7 +33,7 @@ export default {
     },
     methods: {
         onSubmit() {
-           axios.post(USER_ACTIVATE, {
+           axios.post(USERNAME_RESET, {
                uid: this.uid,
                token: this.token,
            })

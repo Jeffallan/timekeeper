@@ -90,8 +90,7 @@ class Profile(ContactInfoModel):
         return True
 
     def has_object_read_permission(self, request):
-        return request.user == self.user or request.user.role == 1
-
+        return True
     @staticmethod
     def has_write_permission(request):
         return True
@@ -101,7 +100,6 @@ class Profile(ContactInfoModel):
         return False
 
     def has_object_write_permission(self, request):
-        #return request.user == self.user or request.user.role == 1
         return False
 
     def has_object_update_permission(self, request):

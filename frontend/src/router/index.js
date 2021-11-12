@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import store from "@/store/index"
-import axios from 'axios'
 
 Vue.use(VueRouter)
 
@@ -31,8 +30,15 @@ const routes = [
     path: "/profile",
     name: "Profile",
     component: () => import("../views/Profile.vue"),
-    meta: {requiresAuth: true}
+    meta: {requiresAuth: true},
   },
+    {
+      path: "/profile/edit",
+      name: "ProfileEdit",
+      props: true,
+      component: () => import("@/components/forms/ProfileForm.vue"),
+      meda: {requiresAuth: true}
+    },
   {
   path: "/password-reset",
   name: "PasswordResetRequest",
@@ -48,7 +54,11 @@ const routes = [
   name: "UserActivate",
   component: () => import ('../views/UserActivate.vue')
   },
-
+  {
+    path: "username-reset/:uid/:token",
+    name: "UsernameReset",
+    component: () => import ("../views/UsernameReset.vue")
+  },
   //404 ERRORS
   // https://stackoverflow.com/questions/45619407/how-to-create-a-404-component-in-vuejs-using-vue-router
   {

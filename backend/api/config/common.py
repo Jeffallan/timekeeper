@@ -210,7 +210,7 @@ class Common(Configuration):
             'django_filters.rest_framework.DjangoFilterBackend',
         ),
     }
-
+    PHONENUMBER_DEFAULT_REGION = 'US'
     # JWT Settings
     SIMPLE_JWT = {'AUTH_HEADER_TYPES': ('JWT',),}
 
@@ -223,6 +223,7 @@ class Common(Configuration):
                 'PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND': True,
                 'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
                 'PASSWORD_RESET_CONFIRM_URL':'#/password-reset-confirm/{uid}/{token}',
+                "USERNAME_RESET_CONFIRM_URL": '#/username-reset/{uid}/{token}',
                 'ACTIVATION_URL': '#/user-activate/{uid}/{token}',
                 'SEND_ACTIVATION_EMAIL': True,
                 'SERIALIZERS': {'user_create': 'api.apps.users.serializers.CreateUserSerializer',
@@ -239,6 +240,6 @@ class Common(Configuration):
                             'password_reset': 'api.apps.core.email.PasswordResetEmail',
                             #'password_changed_confirmation': 'api.apps.core.emails.PasswordChangedConfirmationEmail',
                             #'username_changed_confirmation': 'api.apps.core.emails.UsernameChangedConfirmationEmail',
-                            #'username_reset': 'api.apps.core.emails.UsernameResetEmail',
+                            'username_reset': 'api.apps.core.email.UsernameResetEmail',
                         }
             }
