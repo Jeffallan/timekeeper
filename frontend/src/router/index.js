@@ -32,13 +32,19 @@ const routes = [
     component: () => import("../views/Profile.vue"),
     meta: {requiresAuth: true},
   },
-    {
-      path: "/profile/edit",
-      name: "ProfileEdit",
-      props: true,
-      component: () => import("@/components/forms/ProfileForm.vue"),
-      meda: {requiresAuth: true}
-    },
+  {
+    path: "/profile/edit",
+    name: "ProfileEdit",
+    props: true,
+    component: () => import("@/components/forms/ProfileForm.vue"),
+    meda: {requiresAuth: true}
+  },
+  {
+    path: "/users",
+    name: "Directory",
+    component: () => import("../views/Directory.vue"),
+    meta: {requiresAuth: true},
+  },
   {
   path: "/password-reset",
   name: "PasswordResetRequest",
@@ -55,7 +61,7 @@ const routes = [
   component: () => import ('../views/UserActivate.vue')
   },
   {
-    path: "username-reset/:uid/:token",
+    path: "/username-reset/:uid/:token",
     name: "UsernameReset",
     component: () => import ("../views/UsernameReset.vue")
   },

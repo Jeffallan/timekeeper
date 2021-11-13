@@ -33,7 +33,7 @@
 export default {
         name: "Header",
         props: {
-           // 
+
         },
         data: () => {
           return {
@@ -42,7 +42,8 @@ export default {
                 { name: 'Home', path: '/', },
                 { name: 'About', path: '/about', },
                 { name: 'Viewer', path: '/viewer' },
-                { name: 'Profile', path: 'profile' },
+                { name: "Directory", path: "/users"},
+                { name: 'Profile', path: '/profile' },
            ],
 
           }

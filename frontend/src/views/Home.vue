@@ -1,6 +1,11 @@
-<template v-if="">
-  <div >
+<template >
+<div>
+  <div v-show="mustLogin">
     <Login />
+  </div>
+  <div class="text-center" v-show="!mustLogin">
+    <h1>Welcome</h1>
+  </div>
   </div>
 </template>
 
@@ -14,6 +19,12 @@ export default {
   name: 'Home',
   components: {
     Login,
-  }
+  },
+  computed: {
+    mustLogin() {
+      console.log(this.$store.state.users.status )
+      return this.$store.state.users.status != "success"
+    },
+  },
 }
 </script>

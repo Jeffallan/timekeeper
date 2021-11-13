@@ -1,21 +1,6 @@
 <template>
     <div>
-    <!--
-    <b-modal id="edit" @ok="handleOk" title="Edit Profile">
-        <ProfileForm ref="edit"
-        :email=this.data.user.email
-        :id=this.data.user.id
-        :first_name=this.data.first_name
-        :last_name=this.data.last_name
-        :phone_number=this.data.phone_number
-        :address_1= this.data.address_1
-        :address_2= this.data.address_2
-        :city=this.data.city
-        :state=this.data.state
-        :zip_code=this.data.zip_code
-        />
-    </b-modal>
-    -->
+
     <b-card class="mx-4 text-center" :key="this.counter">
         <b-row >
             <b-col col sm="12" md="4">
@@ -27,15 +12,17 @@
           <b-col col sm="12" md="4">
               <b-card-text>
               <h4>Email</h4>
-            <a :href="'mailto:'+this.data.user.email">{{ this.data.user.email }}</a>
+            <a :href="'mailto:'+this.data.user.email">
+                <b-icon icon="envelope" variant="info" font-scale="1.5"></b-icon>
+            </a>
             </b-card-text>
           </b-col>
           <b-col col sm="12" md="4">
                 <b-card-text>
                 <h4>Phone</h4>
-                <a :href="'tel:'+this.data.phone_number">
-                    ({{ this.data.phone_number.slice(2,5) }})
-                    {{ this.data.phone_number.slice(5,8) }}-{{ this.data.phone_number.slice(8,12) }}
+                <a :href="'tel:'+this.data.phone_number"
+                >
+                     <b-icon icon="telephone" variant="success" font-scale="1.5"></b-icon>
                     </a>
                 </b-card-text>
           </b-col>
@@ -47,10 +34,13 @@
             <h4>Mailing Address</h4>
             <p>{{ this.data.mailing_address }}</p>
         <hr />
-
+        <b-button v-if="this.$store.state.users.user.role == 1"
+            variant="outline-danger"
+            class="float-left">
+            deactivate
+        </b-button>
         <b-button variant="outline-primary"
                   class="float-right"
-                  v-b-modal.edit
                   @click="handleClick"
                   >edit
         </b-button>
@@ -87,6 +77,12 @@ export default {
         user() {
             return this.$store.state.users.user
         },
+        phone() {
+            if (this.data.phone_number != ""){
+                return `(${this.data.phone_number.slice(2,5)}) ${this.data.phone_number.slice(5,8)}-${this.data.phone_number.slice(8,12)}`
+            }
+            return "-"
+        }
     },
     created() {
         this.$http

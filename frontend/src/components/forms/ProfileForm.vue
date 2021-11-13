@@ -107,13 +107,23 @@
       </b-form-input>
         <b-form-invalid-feedback>This field is required.</b-form-invalid-feedback>
       </b-form-group>
+      
       <b-button variant="outline-primary" 
                 class="float-right"
                 @click="onSubmit">submit</b-button>
       <b-button variant="outline-primary" 
-                class="float-right mx-2"
+                class=""
                 @click="onCancel">cancel</b-button>
+      
+      
     </b-form>
+    <br />
+    <b-card-footer class="bg-white">
+      <b-button
+      variant="link">
+        reset email
+      </b-button>
+    </b-card-footer>
 </b-card>
   
 
