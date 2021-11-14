@@ -119,6 +119,17 @@ As a malicious user I would try to accomplish three things. First, editing a ser
 
 ## Mockup
 
+### login
+![Image](./diagrams/mockup/login.drawio.svg)
+
+### Profile List
+![Image](./diagrams/mockup/profile-list.drawio.svg)
+
+### Profile Detail
+![Image](./diagrams/mockup/profile-detail.drawio.svg)
+
+### Profile Edit
+![Image](./diagrams/mockup/profile-edit.drawio.svg)
 
 ## Architecture
 
