@@ -34,7 +34,7 @@ docker ps
     python manage.py createsuperuser
 ```
 
-5) Navigate to localhost:8025 and and click on the activation email to activate the new user.
+5) If you create new users without using the `createsuperuser` command, navigate to localhost:8025 and and click on the activation email to activate the new user.
 
 6) If you plan on developing this application further, creating a virtual environment for the Django Rest Framework is also recommended.
 ```
