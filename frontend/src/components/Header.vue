@@ -40,8 +40,6 @@ export default {
             title: "NavBar",
             urls: [
                 { name: 'Home', path: '/', },
-                { name: 'About', path: '/about', },
-                { name: 'Viewer', path: '/viewer' },
                 { name: "Directory", path: "/users"},
                 { name: 'Profile', path: '/profile' },
            ],
