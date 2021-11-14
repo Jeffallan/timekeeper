@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { LOGIN, ME } from "@/util/constants/Urls"
-import Router from "@/router/index"
+//import Router from "@/router/index"
 
 const state = () => ({
     status:  null,
@@ -40,7 +40,7 @@ const state = () => ({
           //this.$http.defaults.headers.common['Authorization'] = `Token ${token}`
           commit("auth_success", token)
           dispatch("getUserDetails")
-          Router.push("/about")
+          //Router.push("/about")
           resolve(r)
         })
         .catch(e => {

@@ -8,8 +8,6 @@ services:
       - ./db:/db
   web:
     restart: unless-stopped
-    environment:
-      - DJANGO_SECRET_KEY=local
     image: web
     build:
       context: .
@@ -21,11 +19,13 @@ services:
                ./manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./backend:/code/
+    env_file:
+      - .ENV
     ports:
       - "8000:8000"
     depends_on:
       - postgres
-    env_file: 
+    env_file:
       - .ENV
 
   mailhog:
@@ -44,10 +44,10 @@ services:
       - 3000:3000
     volumes:
       - ./frontend:/code/
-    env_file: 
+    env_file:
       - .ENV
     restart: unless-stopped
-    working_dir: /code/frontend
+    working_dir: /code/
     stdin_open: true
     entrypoint: "/bin/sh"
     command: "-c \"if [ ! -d \"node_modules\" ]; then npm i; fi; npm run serve \""

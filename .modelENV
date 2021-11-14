@@ -1,4 +1,4 @@
-NEXTAUTH_URL=http://localhost:3000
-NEXT_PUBLIC_BACKEND_TO_BACKEND_URL=http://web:8000/api/v1/
-NEXT_PUBLIC_FRONTEND_TO_BACKEND_URL=http://localhost:8000/api/v1/
-NEXT_PUBLIC_FRONTEND_URL=http://localhost:3000/
+BACKEND_URL=http://localhost:8000/api/v1/
+FRONTEND_URL=http://localhost:3000/
+DJANGO_SECRET_KEY=local
+PG_STRING=postgres://postgres:@postgres:5432/postgres

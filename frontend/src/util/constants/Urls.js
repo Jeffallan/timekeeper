@@ -1,5 +1,5 @@
-// BASE URL //TODO move to env var
-const BACKEND_BASE = "http://localhost:8000/api/v1/"
+//const BACKEND_BASE = "http://localhost:8000/api/v1/"
+const BACKEND_BASE = process.env.VUE_APP_BACKEND_URL
 
 // AUTH STUFF
 export const LOGIN = `${BACKEND_BASE}auth/token/login/`
