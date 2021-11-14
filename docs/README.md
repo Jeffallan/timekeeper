@@ -115,3 +115,21 @@ As a malicious user I would try to accomplish three things. First, editing a ser
 - [] Implement object level permission restricting a user from editing a service they rendered after a certain time.
 - [] Restricting a Subcontractor's view of the data to only services they themselves have rendered.
 - [] Concerning arbitrary billing. This would require some sort of audit / integration with a third party scheduling application which is outside the scope of the initial minimum viable product.
+
+
+## Mockup
+
+
+## Architecture
+
+### Context
+
+![Image](./diagrams/context.drawio.svg)
+
+### Container
+
+![Image](./diagrams/containers.drawio.svg)
+
+### Component
+
+![Image](./diagrams/component.drawio.svg)
