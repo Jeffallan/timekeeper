@@ -3,7 +3,8 @@
 
         <b-button variant="outline-primary" 
                   class="float-right my-2"
-                  v-if="this.$store.state.users.user.role == 1">
+                  v-if="this.$store.state.users.user.role == 1"
+                  @click="handleClick">
             <b-icon icon="plus"></b-icon>
         </b-button>
  
@@ -65,7 +66,12 @@ export default {
     },
     computed: {
 
-    }
+    },
+    methods: {
+        handleClick() {
+            console.log("clicked")
+        }
+    },
 }
 </script>
 
