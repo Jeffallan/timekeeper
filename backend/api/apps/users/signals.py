@@ -16,5 +16,7 @@ def create_profile(sender, instance, created, **kwargs):
 @receiver(user_activated)
 def set_initail_password(sender, user, request, **kwargs):
     mail = PasswordResetEmail()
-    mail.user = user
+    #mail.usr = user
+    #mail.get_context_data(usr=user)
+    mail.usr = user
     mail.send(to=[user.email])
