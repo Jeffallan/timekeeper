@@ -1,18 +1,6 @@
-<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="531px" height="542px" viewBox="-0.5 -0.5 531 542" content="&lt;mxfile&gt;&lt;diagram id=&quot;Yf133CCdpb665i1ZOy54&quot; name=&quot;Page-1&quot;&gt;7Zpdb5swFIZ/TS5TgYGGXKak3aR1W7VumrQ7N3aCNYMZuE2yXz8bbAjYaaIVuqxtbhIfjLGf857jDzLyomTzLodZ/JEhTEfAQZuRNx8B4Lp+KL6kZVtZgolfGVY5QapSY7glv7EyOsp6TxAuWhU5Y5STrG1csDTFC96ywTxn63a1JaPtp2ZwhQ3D7QJS0/qdIB5X1jBwGvt7TFaxfrLrqCsJ1JWVoYghYusdk3c58qKcMV79SjYRphKe5lLdd7Xnat2xHKf8mBuA8sQDpPdqcDewKNYsR6qDfKtHvSSURoyyXBRTlgrrRcFz9hN3jJCSVSqKFC9FHy6WLOXKha6vyvqOEfCACwIwFXbVEZxzvNk7GrdmJMSFWYJ5vhVVNm19KFl52iHrxklAuyLecZCnbFDpYlW33KATPxQ9O0ndxg7JLxARVrwAjtNn5OiGUwPkCJxTiQCRhxbK81/3MlAuxEj5WOGaybgX48R5c138Wqnvsp0ig6m1Icl0XJSQZTuun232tyIrl0lG+6Cp6C3Lz67JWcJF+2Expg+YkwU0H3HNFpATJjs5QyISHYkPON8yBDnWzxe2qgvtbglzNT7DXOLT1o4oY55QqSxJR+ckRyKHRYyRKogrmayfbFYysZ/diTwlpAuzszwv8+xFrhQayPE1Ta5jwvFtVhFYixuETSpUDJ7OlMw5yx4XfVh5bkHSlSwGTfGrvHU+DvZFUv8hAcyICDxLRAR+HyExNXOL4UDtG0osGUUoEpUf6SIsBa7nLfdoPFVcmoAOIdDkckyFph/aU6gNi3rEDSNlfOk1QgckWy4LzA2MdceOJOsaZCNK5KANvjZhWVK5ibcjabvud4TtWJK9LYB24mtYD/r9ePB8GA+Cw7ExQHIz4iu6nPvzmV0TBxSQEIQoPh0RgMkjc/vfikB3KQxaiXQyjCg8QxTXsJDd+AQT/Bbbvcd2vcPp2Y/+W3D/x8HtusOoInhbDvkDrYfODbSfPzxHyO0GlnCP44TBVbRvPd/Z+l6VH0tMPc2T7Vu2rdKOl2uR95lW1bPHrtfed4wHWkRNDLdHMF3IY7vX7Pp6yaqDbgLOgiMFEOz39fH7PvMo5CaWHMQ65j65k0ccHfccODM6dqHzNHo6VCzHby4IhmFVn0e9LRX6yXrdqTyYWKT/6GLiae40N+YzhMRkXYzqa6eq+6klRwyne3P/24AyQ+DQofKRZ9O9gBL51JZOh0Nl7gojwrcnLSYwtU45wzEyd1y3vDx0PmFInvesiMztxw+SnTag8NipuJfcbW4inmMq7gDvvCoYZm/QmSVFxrXOkhbS/cyS5rr9xZLuvIAJLJzDwVYj5mvyV8LZc8zMMSBn27vf18HZt2aOwUi7/2a7dAqkw+E4i2Lz353qIKb5B5R3+Qc=&lt;/diagram&gt;&lt;/mxfile&gt;">
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="531px" height="541px" viewBox="-0.5 -0.5 531 541" content="&lt;mxfile&gt;&lt;diagram id=&quot;VdfVkT1nu3FGbKogB7rt&quot; name=&quot;Page-1&quot;&gt;7VnbjpswEP0aHrMCAwn7uEs2rVR1u1JaVeqbN5hg1WAKzq1fXxtMuNhJUBN2o6Z5SGDwbc45M/YQw/bj7YcMptFnGiBiADPYGvbUAMAaj13+Iyy70uLZdmlYZjiQjWrDHP9G0mhK6woHKG81ZJQShtO2cUGTBC1YywazjG7azUJK2rOmcIkUw3wBiWr9jgMWSS9cs7Z/RHgZVTNbpnwSw6qxNOQRDOimYbKfDNvPKGXlVbz1ERHgVbiU/WYHnu4XlqGE9ekAyg5rSFbSNwOMCe/6GOC1WB/bSafHv1ZiUY8MbdkIErxMDPtBYMxnQln9nF8t5W8xTp7CRDtQSBM2ygtuxTiWk24PjyIaF4QSmrVGMYAdFp+myQzhoj1ZhMgaMbyA6hQ+wagY/CEIDAHXjH9/SwPIUDU7t5ULaC+Km0vvFHMBXmUFLfdBxGLCryyBTcW+KQCHeYQCecOfpKJ9vF2KELp75YrIGb+8y7JC0Y+ZDAtXeFcPuYkwQ/O09H/DO3DbGmXCdfJQsjZlVFglh1OCwgphOaTllbwtcLIUt259+1V0nY4KC8voT+RLRhKaoL23YkK0PShJay90niEQjRHLdrzJrh3kmzqyXFvaokZUuY40QhnNy/1QteD5hdS8Xv+2Rv8dvioqCC48bLvN5RcUH8EIEmquEoLVFw2gR+OU+xVMGSKQ4XU7M+kgkVO8UFyoXaLtdkCkYZgjpkC4X1gvVMcKqs8wRiqyOgWFmJCOSQW2o129wBsKNjsCdw5ESiOQhuTOuQx3+23louRNTofEAClMCSv/aepMH/SCOEF/jIOAoGtRAJhoFGCfqYBqQZ48SVWKsIZQhHfrSdIZJEveK7B++fQWodYMKE6NaXruzD+0oYuYaTSeFR9NLJ3DYrvDrnXXYHgv7kumUjn3yKrkI6cfjYegvPKgwbkPk4Uoj26XdzBuQ+9MwJ3bk333MNF9j4CWWgO9RAIEYD6v4ldR23S4OXJydg7iqe5i50BXBYmrHpYt4A4EVI/D8v+TQd9k19253YlG9EfPDmdx6Shc8vKXb865KMWvWfH3mtQwmOLdIyip4j+BkgaQv6+hj6PEc6guhQ6Gk1rw+ZjtrlhG4F67xwwGkFpUzVnxgulqEbLtt8RHLTF+4PSa0fH6bryXSNZqpfAWG28H7c4LwSEKgM6eyHOsdk/UwHyJPRGoh/N/FOb2eRu4GpC9gQ4e1XJvDWTbVBPGcCCrJc1tgOxoE8ZgML9PQfT+MHvDgcxv638/yzcs9X/I9tMf&lt;/diagram&gt;&lt;/mxfile&gt;">
     <defs/>
     <g>
-        <rect x="0" y="330" width="200" height="30" fill="none" stroke="none" pointer-events="all"/>
-        <g fill="#212529" font-family="Helvetica" font-size="14px">
-            <text x="1.5" y="350.5">
-                Password
-            </text>
-        </g>
-        <rect x="0" y="370" width="200" height="30" fill="none" stroke="none" pointer-events="all"/>
-        <g fill="#212529" font-family="Helvetica" font-size="14px">
-            <text x="1.5" y="390.5">
-                Radios
-            </text>
-        </g>
         <rect x="0" y="0" width="530" height="540" rx="5" fill="#ffffff" stroke="none" pointer-events="all"/>
         <g transform="translate(-0.5 -0.5)">
             <switch>
@@ -23,7 +11,7 @@
                                 <div style="text-align: center">
                                     <span style="font-size: 14px">
                                         <font color="#ffffff" face="helvetica">
-                                            Location Add / Update
+                                            Client Add / Update
                                         </font>
                                     </span>
                                 </div>
@@ -32,29 +20,11 @@
                     </div>
                 </foreignObject>
                 <text x="15" y="33" fill="#000000" font-family="Helvetica" font-size="18px">
-                    Location Add / Update
+                    Client Add / Update
                 </text>
             </switch>
         </g>
         <path d="M 0 55 L 530 55" fill="none" stroke="#dddddd" stroke-miterlimit="10" pointer-events="all"/>
-        <rect x="0" y="60" width="530" height="40" fill="none" stroke="none" pointer-events="all"/>
-        <g transform="translate(-0.5 -0.5)">
-            <switch>
-                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 512px; height: 1px; padding-top: 75px; margin-left: 10px;">
-                        <div style="box-sizing: border-box; font-size: 0; text-align: left; ">
-                            <div style="display: inline-block; font-size: 14px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                Client
-                            </div>
-                        </div>
-                    </div>
-                </foreignObject>
-                <text x="10" y="89" fill="#000000" font-family="Helvetica" font-size="14px">
-                    Client
-                </text>
-            </switch>
-        </g>
-        <rect x="185" y="70" width="270" height="30" rx="5" fill="none" stroke="#ced4da" pointer-events="all"/>
         <rect x="0" y="100" width="530" height="40" fill="none" stroke="none" pointer-events="all"/>
         <g transform="translate(-0.5 -0.5)">
             <switch>
@@ -62,13 +32,13 @@
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 512px; height: 1px; padding-top: 115px; margin-left: 10px;">
                         <div style="box-sizing: border-box; font-size: 0; text-align: left; ">
                             <div style="display: inline-block; font-size: 14px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                Last Name
+                                Name
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="10" y="129" fill="#000000" font-family="Helvetica" font-size="14px">
-                    Last Name
+                    Name
                 </text>
             </switch>
         </g>

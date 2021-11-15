@@ -1,18 +1,6 @@
-<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="531px" height="542px" viewBox="-0.5 -0.5 531 542" content="&lt;mxfile&gt;&lt;diagram id=&quot;Yf133CCdpb665i1ZOy54&quot; name=&quot;Page-1&quot;&gt;7Zpdb5swFIZ/TS5TgYGGXKak3aR1W7VumrQ7N3aCNYMZuE2yXz8bbAjYaaIVuqxtbhIfjLGf857jDzLyomTzLodZ/JEhTEfAQZuRNx8B4Lp+KL6kZVtZgolfGVY5QapSY7glv7EyOsp6TxAuWhU5Y5STrG1csDTFC96ywTxn63a1JaPtp2ZwhQ3D7QJS0/qdIB5X1jBwGvt7TFaxfrLrqCsJ1JWVoYghYusdk3c58qKcMV79SjYRphKe5lLdd7Xnat2xHKf8mBuA8sQDpPdqcDewKNYsR6qDfKtHvSSURoyyXBRTlgrrRcFz9hN3jJCSVSqKFC9FHy6WLOXKha6vyvqOEfCACwIwFXbVEZxzvNk7GrdmJMSFWYJ5vhVVNm19KFl52iHrxklAuyLecZCnbFDpYlW33KATPxQ9O0ndxg7JLxARVrwAjtNn5OiGUwPkCJxTiQCRhxbK81/3MlAuxEj5WOGaybgX48R5c138Wqnvsp0ig6m1Icl0XJSQZTuun232tyIrl0lG+6Cp6C3Lz67JWcJF+2Expg+YkwU0H3HNFpATJjs5QyISHYkPON8yBDnWzxe2qgvtbglzNT7DXOLT1o4oY55QqSxJR+ckRyKHRYyRKogrmayfbFYysZ/diTwlpAuzszwv8+xFrhQayPE1Ta5jwvFtVhFYixuETSpUDJ7OlMw5yx4XfVh5bkHSlSwGTfGrvHU+DvZFUv8hAcyICDxLRAR+HyExNXOL4UDtG0osGUUoEpUf6SIsBa7nLfdoPFVcmoAOIdDkckyFph/aU6gNi3rEDSNlfOk1QgckWy4LzA2MdceOJOsaZCNK5KANvjZhWVK5ibcjabvud4TtWJK9LYB24mtYD/r9ePB8GA+Cw7ExQHIz4iu6nPvzmV0TBxSQEIQoPh0RgMkjc/vfikB3KQxaiXQyjCg8QxTXsJDd+AQT/Bbbvcd2vcPp2Y/+W3D/x8HtusOoInhbDvkDrYfODbSfPzxHyO0GlnCP44TBVbRvPd/Z+l6VH0tMPc2T7Vu2rdKOl2uR95lW1bPHrtfed4wHWkRNDLdHMF3IY7vX7Pp6yaqDbgLOgiMFEOz39fH7PvMo5CaWHMQ65j65k0ccHfccODM6dqHzNHo6VCzHby4IhmFVn0e9LRX6yXrdqTyYWKT/6GLiae40N+YzhMRkXYzqa6eq+6klRwyne3P/24AyQ+DQofKRZ9O9gBL51JZOh0Nl7gojwrcnLSYwtU45wzEyd1y3vDx0PmFInvesiMztxw+SnTag8NipuJfcbW4inmMq7gDvvCoYZm/QmSVFxrXOkhbS/cyS5rr9xZLuvIAJLJzDwVYj5mvyV8LZc8zMMSBn27vf18HZt2aOwUi7/2a7dAqkw+E4i2Lz353qIKb5B5R3+Qc=&lt;/diagram&gt;&lt;/mxfile&gt;">
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="531px" height="541px" viewBox="-0.5 -0.5 531 541" content="&lt;mxfile&gt;&lt;diagram id=&quot;pmPorvHOR1ujl-aZkSFm&quot; name=&quot;Page-1&quot;&gt;7VrbjqM4EP2aPKYFBhLymA6dGWmuUq+00r65gwPWGMyAc9uvXxtsbnbSaBJ6ou3JS6AwtuucU2WXk4mzSo4fcpjFX2iIyARY4XHiBBMA7NnM41/CcqosvuNUhijHoWzUGJ7xv0gaLWnd4RAVnYaMUsJw1jVuaJqiDevYYJ7TQ7fZlpLuqBmMkGZ43kCiW//GIYulF57V2D8iHMVqZNuSTxKoGktDEcOQHlom52nirHJKWXWVHFeICPAULtV76zNP64nlKGVDXgDVC3tIdtK3CZgR/upjiPdifuwknZ793IlJPTJ0ZFNIcJROnKXAmI+E8uY5v4rkd9lPkcHU2NGWpmxalNyKfmw3O57vRTQuCSU07/QyAc62/LRN1hZuuoPFiOwRwxuoD/GZbiDDVExyGYZqQA5ZNWZ3HtxcOaSZS7yUFXQ8BjFLCL+yBRyKcEtgDIsYhfKGP8lE++QYiah5eOEiKBi/fMjzUsSPuYwETzjUdHmIMUPPWeXygb/AbXuUC2/JsiIqYFRYJW0BQVsFquzS9iuqNjiNxK3X3P4lXg2mpYXl9AdaSRJSmqLaWzEgOp5VoV1rmycFRBPE8hNvcurG9aEJJs+RtrgVSJ4rjVAGcFR31WicX0iZmyXvGCTf40tRQXDpYddtrriw/AhGkBCwygH2UDSAGY3X3Fcw5Yhwxe67ycgEiRziO8Vl9Ei0vR6IdLstENMgrCc2CFVXQ3VFsHBYw9akoS0mpGfSoe2p1yzxloatnsTdM7HSCqUx2XNvw95sDPZmGntfYYL+cHdj7up9wE3Jm7+e0EZYgLSkuHoK3GBpFsQr9Cc4DAm6FwWAuUEBzpUKUBPy5dZXKcIeQxH+e1/i3FHWuIUG67dPbxFq7YDi1FiW761X57ZjImZajdflxxBL17DYfeHUuWsxXIv7lqlUjj21lXzk8NNRFkblQXtfA9ONqGffL+/1HkRF2xw8eAPZ984TPXQDb+tF6/dYgACsr7vkRRSjPW4u1D3uWTz1Vewa6FSQeHqpYwNvJKAGlDp/dgZDk11/5fbmBtFf3DtcxaVeYC3DkC/OhTg7uWfFLwypYTTFexdQ0sX/CkoGQH79BOQySjyHmlLoaDjpBd8Ks9MdywgsjGvMaADpRdUzg0wvie8HIcd5S3z0EuMfnN0zOv7QhfcWyVqvFN5i4e2h3TvOHaMA6K2JPMca10QDzLdYE4G+Of+fwtzdbwPPALI/0sZDTfe9gexYesIYD2S9pHkfILvGhDEazL+nIPr9MPtvCbJeqQQ5zTiS4ifWlx1j4rfWHuo53aVhCa+tH3ys7TVYn90vtAjrnYF4i9nct3QC2oiDhpDP5dOgPvK5ioFFl4G5IZnMTMuicwMC9CJIw1sJmOUYplFZYYdYSFf8EO4EBd2JafaJqAG9TMQg+NzL+HXQs4xbfx09WdVce7QIeieLPU5+5WCR3zZ/6qiaN3+NcZ7+Aw==&lt;/diagram&gt;&lt;/mxfile&gt;">
     <defs/>
     <g>
-        <rect x="0" y="330" width="200" height="30" fill="none" stroke="none" pointer-events="all"/>
-        <g fill="#212529" font-family="Helvetica" font-size="14px">
-            <text x="1.5" y="350.5">
-                Password
-            </text>
-        </g>
-        <rect x="0" y="370" width="200" height="30" fill="none" stroke="none" pointer-events="all"/>
-        <g fill="#212529" font-family="Helvetica" font-size="14px">
-            <text x="1.5" y="390.5">
-                Radios
-            </text>
-        </g>
         <rect x="0" y="0" width="530" height="540" rx="5" fill="#ffffff" stroke="none" pointer-events="all"/>
         <g transform="translate(-0.5 -0.5)">
             <switch>
@@ -23,7 +11,7 @@
                                 <div style="text-align: center">
                                     <span style="font-size: 14px">
                                         <font color="#ffffff" face="helvetica">
-                                            Location Add / Update
+                                            Location Add
                                         </font>
                                     </span>
                                 </div>
@@ -32,7 +20,7 @@
                     </div>
                 </foreignObject>
                 <text x="15" y="33" fill="#000000" font-family="Helvetica" font-size="18px">
-                    Location Add / Update
+                    Location Add
                 </text>
             </switch>
         </g>
@@ -54,7 +42,6 @@
                 </text>
             </switch>
         </g>
-        <rect x="185" y="70" width="270" height="30" rx="5" fill="none" stroke="#ced4da" pointer-events="all"/>
         <rect x="0" y="100" width="530" height="40" fill="none" stroke="none" pointer-events="all"/>
         <g transform="translate(-0.5 -0.5)">
             <switch>
@@ -62,13 +49,13 @@
                     <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 512px; height: 1px; padding-top: 115px; margin-left: 10px;">
                         <div style="box-sizing: border-box; font-size: 0; text-align: left; ">
                             <div style="display: inline-block; font-size: 14px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
-                                Last Name
+                                Name
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="10" y="129" fill="#000000" font-family="Helvetica" font-size="14px">
-                    Last Name
+                    Name
                 </text>
             </switch>
         </g>
@@ -150,6 +137,24 @@
         <rect x="180" y="300" width="280" height="30" rx="5" fill="#ffffff" stroke="#000000" pointer-events="all"/>
         <rect x="180" y="342.5" width="280" height="30" rx="5" fill="#ffffff" stroke="#000000" pointer-events="all"/>
         <rect x="180" y="385" width="280" height="30" rx="5" fill="#ffffff" stroke="#000000" pointer-events="all"/>
+        <rect x="190" y="70" width="265" height="33" rx="4.95" ry="4.95" fill="#f1f2f4" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 1px; height: 1px; padding-top: 87px; margin-left: 202px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: left; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #596780; line-height: 1.2; pointer-events: all; white-space: nowrap; ">
+                                Dropdown button
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="202" y="90" fill="#596780" font-family="Helvetica" font-size="12px">
+                    Dropdown button
+                </text>
+            </switch>
+        </g>
+        <path d="M 438 80.5 L 444 86.5 L 438 92.5 Z" fill="#596780" stroke="none" transform="rotate(90,441,86.5)" pointer-events="all"/>
     </g>
     <switch>
         <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>

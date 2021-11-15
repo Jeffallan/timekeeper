@@ -119,7 +119,7 @@ As a malicious user I would try to accomplish three things. First, editing a ser
 
 ## Mockup
 
-### login
+### Login
 ![Image](./diagrams/mockup/login.drawio.svg)
 
 ### Profile List
@@ -128,8 +128,46 @@ As a malicious user I would try to accomplish three things. First, editing a ser
 ### Profile Detail
 ![Image](./diagrams/mockup/profile-detail.drawio.svg)
 
-### Profile Edit
+### Profile Edit Form
 ![Image](./diagrams/mockup/profile-edit.drawio.svg)
+
+### Location Add / Edit Form
+![Image](./diagrams/mockup/location_add.drawio.svg)
+
+### Client Add Edit Form
+![Image](./diagrams/mockup/client_add.drawio.svg)
+
+### Client List
+![Image](./diagrams/mockup/client_list.drawio.svg)
+
+### Client Detail
+![Image](./diagrams/mockup/client_detail.drawio.svg)
+
+### Location Detail
+![Image](./diagrams/mockup/location_detail.drawio.svg)
+
+### Location List
+![Image](./diagrams/mockup/location_list.drawio.svg)
+
+### Service List
+![Image](./diagrams/mockup/service_list.drawio.svg)
+
+### Service Add / Update Form
+![Image](./diagrams/mockup/service_edit.drawio.svg)
+
+### Service Detail
+![Image](./diagrams/mockup/service_detail.drawio.svg)
+
+### Work Performed List
+![Image](./diagrams/mockup/work_list.drawio.svg)
+
+### Work Performed Detail
+![Image](./diagrams/mockup/work_detail.drawio.svg)
+
+### Work Performed Add /Edit Form
+![Image](./diagrams/mockup/work_form.drawio.svg)
+
+
 
 ## Architecture
 

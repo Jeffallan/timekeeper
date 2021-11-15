@@ -1,0 +1,102 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="261px" height="261px" viewBox="-0.5 -0.5 261 261" content="&lt;mxfile&gt;&lt;diagram id=&quot;AQWJm9EGgQhBxSFcVTpN&quot; name=&quot;Page-1&quot;&gt;1VdLc5swEP41nmkP8fAw2DnabpwckplMnLbHjgwCNJEtKuRXf31XsDxFHHfivuAAfLvSar9d7YqBO18fbiVJkwcRUj5wrPAwcD8NHMd2RxN4aORYIBPXLYBYshCVamDJflAELUS3LKRZS1EJwRVL22AgNhsaqBZGpBT7tlokeNtqSmJqAMuAcBP9ykKVoBeeVeN3lMVJadm2ULImpTICWUJCsW9A7s3AnUshVPG2Pswp1+SVvBTjFq9Iq4VJulHnDHCKATvCt+jbwPE5DJ0psgJ3HWslZEhlLvO/b/W6Znb9Cgr7ioFKrt31WkqZOiJ5JYjDpiAs9a1CN0HqekTFYq4CwTlJM1roVF8Ng36Mz8KXlYBU64LSQEKdH5zFm9ZKA+CSSnP2JZU7FtByNJCsJ3jXlJ8hao71fEwvOuuMaHKsJ6KqaVeV8x+mUT7Ievjy+PGkVQ2anL2XxXLYtgtEIicDoiva6TdwXAuuKDoREsturLqYyXDGsHgJrheUqkvOZwbsf4pREJyKkTP4OzG6E1uZ/WtB0mBfmdJ4UYpL3GnVU0fRg8YTteYA2PAqdlRGPG8rEYNyD3GCx7wKkht5+gY8U1K80IbEzy+MbAMvrsp8s8FgzwGbsJIGhA3nloo1VRL8slA6wt6Hzd8ue2HdSBzHRyxptNFqIMH2HVdT1x0OXrDJ9Te8cU/D6xAKPTnVrzI/OnS5W/j6NrjbiA39PfRYJj22P+qh5wLsTN5mp5FnBQPlCShHyuOM7tchyRIa4kdJ6voQ6zPhkIlsvGXDNZEx2zwVTEvNgE4yeSxfQPCQqwDgmcG4Gen7/GCMzw7Gn2D72mB7SYkMklczsknekMHpNhtyIV7YJv4Wc5JlfTt6Mob7ukMdEtTZ5JUqJyvKH0XGFBOaeVn4PdO8MTgG33fkaxaGeq2zsmRyGjX1pwhXetowHuvLYrNEd/NkSUkATj2LFADnnZFEqTX0Wvuq+m5E2jfjjJCknCi2a5//+2KP9h8FyzsjGr+yxy3jV257BhFFmT43dHKn8uKsdCr/jlq71+wXzQ189nZdwR8JpBZJhxLLosT4mW0Ek8usDp3Na8+n3mxipuEivwDfJ0zRJeSCtrMH440Mw1Z8Iscwie7zVMyd6qZZIwttvx6BTl2glDve27Xc6+t0v15c4LP+ayySp/73dm9+Ag==&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="0" y="20" width="260" height="240" fill="#f5f5f5" stroke="#666666" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 262px; height: 240px; padding-top: 20px; margin-left: 0px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: left; width: 260px; height: 240px; overflow: hidden; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #333333; line-height: 1.2; pointer-events: all; width: 100%; height: 100%; white-space: nowrap; ">
+                                <table border="1" width="100%" style="width: 100% ; height: 100% ; border-collapse: collapse">
+                                    <tbody>
+                                        <tr>
+                                            <td align="center">
+                                                Service
+                                            </td>
+                                            <td align="center">
+                                                Unt Type
+                                            </td>
+                                            <td align="center">
+                                                Base Rate
+                                                <br/>
+                                                (After MVP)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                <u>
+                                                    <font color="#0000ff">
+                                                        Service 1
+                                                    </font>
+                                                </u>
+                                            </td>
+                                            <td align="center">
+                                                Feet
+                                            </td>
+                                            <td align="center">
+                                                <br/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                <u>
+                                                    <font color="#0000cc">
+                                                        Service 2
+                                                    </font>
+                                                </u>
+                                            </td>
+                                            <td align="center">
+                                                Hours
+                                            </td>
+                                            <td align="center">
+                                                <br/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="0" y="32" fill="#333333" font-family="Helvetica" font-size="12px">
+                    ServiceUnt TypeBase Rate...
+                </text>
+            </switch>
+        </g>
+        <rect x="0" y="0" width="164" height="20" fill="#f6f6f6" stroke="none" pointer-events="all"/>
+        <rect x="5" y="5" width="154" height="10" rx="3" ry="3" fill="#e4e4e4" stroke="none" pointer-events="all"/>
+        <ellipse cx="67.4" cy="9.4" rx="2.4" ry="2.4" fill="none" stroke="#878789" pointer-events="all"/>
+        <path d="M 69.08 11.08 L 71 13" fill="none" stroke="#878789" stroke-miterlimit="10" pointer-events="all"/>
+        <g fill="#878789" font-family="Helvetica" font-size="6px">
+            <text x="72.5" y="12.5">
+                Search
+            </text>
+        </g>
+        <rect x="210" y="0" width="50" height="20" rx="5" fill="#1ca5b8" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 42px; height: 1px; padding-top: 10px; margin-left: 214px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 16px; font-family: Helvetica; color: #FFFFFF; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                +
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="235" y="15" fill="#FFFFFF" font-family="Helvetica" font-size="16px" text-anchor="middle">
+                    +
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>

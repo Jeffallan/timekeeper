@@ -1,0 +1,108 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="261px" height="261px" viewBox="-0.5 -0.5 261 261" content="&lt;mxfile&gt;&lt;diagram id=&quot;gqGeQX154txBoodN1ItJ&quot; name=&quot;Page-1&quot;&gt;7VhLc6M4EP41PsbFIxDnGHvsmcNMVWq9VXvckkGAKgKxQo6d+fXbghYvwTipeLNzCByAT8/+vqa7YeFv8vNXScrsh4gpX3hOfF74Xxae54ZhABeNvDTIyvcbIJUsxk4dsGc/KYIOokcW02rQUQnBFSuHYCSKgkZqgBEpxWnYLRF8uGpJUmoB+4hwG/2LxSpDKwKnw79RlmZmZdfBlpyYzghUGYnFqQf524W/kUKo5i4/byjX5BlemnG7mdZ2Y5IW6lUDwmbEM+FHNG7hhRzGrhU5gL2ecxAyprJuC/856o2t3e4WOpxaCtp2bW8w6FSpF2TPgDjsARpNf6fpmyF3E03NZm4iwTkpK9r0aZ96C4YpXhtbDgJ8bQxKC4m1g3CWFoOdRkAmlfbsG840zTgYSNbj3zXjYyYKes0Jtzlh/JcTatAm4r3UmGHHMZAIzZiWTAx9auH5DhxJMs+z4/Y23Uxk2WIteA0WzbCDRcv/MPtvJlgU/UIwb/Ep2LRgGpwKShpvAq/BvUH09BQ9azxTOQfAhVvxTGXC6yySMIjuoBlcNq1gfhLoE/BKSfFEey1hfaDKPbw52uX7+QRTDKwJO+lBmF++UpFTJcEuB1tvMdVhrndN6uvShueFiGW9rNkOJJit03bqLqHBDea0mfx2N5HfRoz2qNRWMcjz38mB8kdRMcWE9omDUErk0ME4CbqGv+a655pET6kUxyLus14fvUkfcKwSZauFKR+8KXUcZ+XsdOJrqwT9EJMqozE+QEupzcjPqS61lkxUd0sGdU+1rCO/5Qse0WerrCXjhNizyo6lhdktaf0JZd1wGVxB2tWntB8mre/ab+1/KO39ZWkv6jmh/VAmS/ChSoUuxSySHWe93XkT8pCfR0mXuTgwvcN1KZiedfsMk1e4jSvo4oajV84NbF0CW5fgCrHUBO5PVS6qcu8vvQ8Uxr0sjCFG1t/DY/52oT7nyL4CQ+MiwLHDiRveThQB16DHe1OiGEZv980x+sggPsuUFX80VEtNga6l5Iu5gYYfdRcAAluN7a0+36XGnBwfwrdv8b2nREbZrFNOpDguxBMr0r9TTqpqKoOu7uC8H5FnosOwmm278lFUko3hs7VBzuK4jhsmKHGaqInI1fbTC+PvKlNV79Hc2l1KEoFRf+pAV9cF79ISRzgm476Mnntah7bSCEnKiWLPwx9bU+rj+o86gnaL35gCGxe/8YcziCSpqLK8p7XidQ51O/EC219G/Xf41W/sQQgFvkXKpcTQKFFA+4MJvcsOEKP31908BOuV7Ye7+gD8lDFF9+AMep0TLD6V92adDL3oe+2LtVFjP+u5oRt2I9Coa5SHweV4Hkx90709vMBj9zu0cZ7up7K//Rc=&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="0" y="20" width="260" height="240" fill="#f5f5f5" stroke="#666666" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe flex-start; justify-content: unsafe flex-start; width: 262px; height: 240px; padding-top: 20px; margin-left: 0px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: left; width: 260px; height: 240px; overflow: hidden; ">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: #333333; line-height: 1.2; pointer-events: all; width: 100%; height: 100%; white-space: nowrap; ">
+                                <table border="1" width="100%" style="width: 100% ; height: 100% ; border-collapse: collapse">
+                                    <tbody>
+                                        <tr>
+                                            <td align="center">
+                                                Client
+                                            </td>
+                                            <td align="center">
+                                                Phone
+                                            </td>
+                                            <td align="center">
+                                                Email
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                <u>
+                                                    <font color="#0000ff">
+                                                        Client 1
+                                                    </font>
+                                                </u>
+                                            </td>
+                                            <td align="center">
+                                                <br/>
+                                            </td>
+                                            <td align="center">
+                                                <br/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                <u>
+                                                    <font color="#0000cc">
+                                                        Client 2
+                                                    </font>
+                                                </u>
+                                            </td>
+                                            <td align="center">
+                                                <br/>
+                                            </td>
+                                            <td align="center">
+                                                <br/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="0" y="32" fill="#333333" font-family="Helvetica" font-size="12px">
+                    ClientPhoneEmailClient 1Client 2
+                </text>
+            </switch>
+        </g>
+        <rect x="200" y="132" width="30" height="16.5" fill="#2a2a2a" stroke="#0080f0" stroke-width="2" pointer-events="all"/>
+        <path d="M 200 132 L 215 145.5 L 230 132 M 200 148.5 L 209.3 140.25 M 230 148.5 L 220.7 140.25" fill="none" stroke="#0080f0" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="200" y="210" width="30" height="16.5" fill="#2a2a2a" stroke="#0080f0" stroke-width="2" pointer-events="all"/>
+        <path d="M 200 210 L 215 223.5 L 230 210 M 200 226.5 L 209.3 218.25 M 230 226.5 L 220.7 218.25" fill="none" stroke="#0080f0" stroke-width="2" stroke-miterlimit="10" pointer-events="all"/>
+        <rect x="120" y="115" width="35" height="50" fill="none" stroke="none" pointer-events="all"/>
+        <path d="M 120.09 118.88 C 120 117.86 120.37 116.85 121.11 116.12 C 121.85 115.38 122.89 115 123.94 115.06 L 151.36 115.06 C 153.31 115.06 154.92 116.54 155 118.43 L 155 161.83 C 154.9 163.34 153.81 164.61 152.29 165 L 122.9 165 C 121.46 164.7 120.35 163.59 120.09 162.18 Z M 131.64 116.72 C 131.19 116.86 130.88 117.27 130.88 117.73 C 130.88 118.19 131.19 118.59 131.64 118.73 L 143.61 118.73 C 144.06 118.59 144.37 118.19 144.37 117.73 C 144.37 117.27 144.06 116.86 143.61 116.72 Z M 123.58 120.24 L 123.58 156.35 L 151.62 156.35 L 151.62 120.24 Z M 134.76 159.47 C 134.12 159.47 133.59 159.97 133.59 160.6 C 133.59 161.22 134.12 161.73 134.76 161.73 L 140.64 161.73 C 141.29 161.73 141.81 161.22 141.81 160.6 C 141.81 159.97 141.29 159.47 140.64 159.47 Z" fill="#00bef2" stroke="none" pointer-events="all"/>
+        <rect x="120" y="193.25" width="35" height="50" fill="none" stroke="none" pointer-events="all"/>
+        <path d="M 120.09 197.13 C 120 196.11 120.37 195.1 121.11 194.37 C 121.85 193.63 122.89 193.25 123.94 193.31 L 151.36 193.31 C 153.31 193.31 154.92 194.79 155 196.68 L 155 240.08 C 154.9 241.59 153.81 242.86 152.29 243.25 L 122.9 243.25 C 121.46 242.95 120.35 241.84 120.09 240.43 Z M 131.64 194.97 C 131.19 195.11 130.88 195.52 130.88 195.98 C 130.88 196.44 131.19 196.84 131.64 196.98 L 143.61 196.98 C 144.06 196.84 144.37 196.44 144.37 195.98 C 144.37 195.52 144.06 195.11 143.61 194.97 Z M 123.58 198.49 L 123.58 234.6 L 151.62 234.6 L 151.62 198.49 Z M 134.76 237.72 C 134.12 237.72 133.59 238.22 133.59 238.85 C 133.59 239.47 134.12 239.98 134.76 239.98 L 140.64 239.98 C 141.29 239.98 141.81 239.47 141.81 238.85 C 141.81 238.22 141.29 237.72 140.64 237.72 Z" fill="#00bef2" stroke="none" pointer-events="all"/>
+        <rect x="0" y="0" width="164" height="20" fill="#f6f6f6" stroke="none" pointer-events="all"/>
+        <rect x="5" y="5" width="154" height="10" rx="3" ry="3" fill="#e4e4e4" stroke="none" pointer-events="all"/>
+        <ellipse cx="67.4" cy="9.4" rx="2.4" ry="2.4" fill="none" stroke="#878789" pointer-events="all"/>
+        <path d="M 69.08 11.08 L 71 13" fill="none" stroke="#878789" stroke-miterlimit="10" pointer-events="all"/>
+        <g fill="#878789" font-family="Helvetica" font-size="6px">
+            <text x="72.5" y="12.5">
+                Search
+            </text>
+        </g>
+        <rect x="210" y="0" width="50" height="20" rx="5" fill="#1ca5b8" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 42px; height: 1px; padding-top: 10px; margin-left: 214px;">
+                        <div style="box-sizing: border-box; font-size: 0; text-align: center; ">
+                            <div style="display: inline-block; font-size: 16px; font-family: Helvetica; color: #FFFFFF; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; ">
+                                +
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="235" y="15" fill="#FFFFFF" font-family="Helvetica" font-size="16px" text-anchor="middle">
+                    +
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>
