@@ -6,10 +6,7 @@ import SecureLS from "secure-ls"
 
 
 const ls = new SecureLS({ 
-                          //isCompression: false,
                           encodingType: 'aes',
-                          //TODO
-                          // encryptionSecret: ENV.secretKey
                         })
 
 Vue.use(Vuex)
