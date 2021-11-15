@@ -11,8 +11,6 @@
     "@pencilpix/vue2-clock-picker": "^0.1.6",
     "axios": "^0.21.1",
     "bootstrap-vue": "^2.17.3",
-    "clappr": "^0.3.13",
-    "clappr-video360": "^0.1.1",
     "core-js": "^3.6.5",
     "install": "^0.13.0",
     "npm": "^6.14.11",
