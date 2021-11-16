@@ -63,3 +63,9 @@ class AdminProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ["id", "first_name", "last_name", "address_1", "address_2", "city", "state", "zip_code", "phone_number", "mailing_address", "user", "permissions"]
 
+
+class IncludeProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    class Meta:
+        fields = ["id", "first_name", "last_name", "address_1", "address_2", "city", "state", "zip_code", "phone_number", "mailing_address", "user",]
+        model = Profile
