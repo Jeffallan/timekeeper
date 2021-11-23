@@ -32,6 +32,7 @@ class Common(Configuration):
         'api.apps.users',
         'api.apps.core',
         "api.apps.clients",
+        "api.apps.services",
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/

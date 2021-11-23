@@ -7,6 +7,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 from api.apps.users.views import UserViewSet, ProfileViewset
 from api.apps.clients.views import LocationViewSet, ClientViewSet
+from api.apps.services.views import ServiceViewSet
 
 
 
@@ -14,7 +15,8 @@ router = DefaultRouter()
 router.register(r'auth/users/roles', UserViewSet)
 router.register(r"auth/users/profiles", ProfileViewset)
 router.register(r"clients", ClientViewSet)
-router.register(f"locations", LocationViewSet)
+router.register(r"locations", LocationViewSet)
+router.register(r"services", ServiceViewSet)
 #router.register(f"auth/", include("djoser.urls"))
 
 urlpatterns = [
