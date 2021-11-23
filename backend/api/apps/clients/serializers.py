@@ -14,14 +14,14 @@ class IncludeClientSerializer(serializers.ModelSerializer):
 
 class LocationSerializer(serializers.ModelSerializer):
 
-    provider_details = IncludeProfileSerializer(read_only=True, many=True)
+    providers = IncludeProfileSerializer(read_only=True, many=True)
     client = IncludeClientSerializer(read_only=True)
 
     class Meta:
         model = Location
         #depth = 2
         fields = ["id", "name", "client", "address_1", "address_2", "created", "updated",
-                  "city", "state", "zip_code", "phone_number", "mailing_address", "providers", "provider_details"]
+                  "city", "state", "zip_code", "phone_number", "mailing_address",  "providers"]
 
 
 class ClientSerializer(serializers.ModelSerializer):
