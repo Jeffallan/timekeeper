@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Client, Location
-from api.apps.users.serializers import IncludeProfileSerializer
+from api.apps.users.serializers import AdminUserSerializer
+from rest_flex_fields import FlexFieldsModelSerializer
 
 
 
@@ -12,16 +13,16 @@ class IncludeClientSerializer(serializers.ModelSerializer):
                   "city", "state", "zip_code", "phone_number", "mailing_address",]
 
 
-class LocationSerializer(serializers.ModelSerializer):
-
-    providers = IncludeProfileSerializer(read_only=True, many=True)
-    client = IncludeClientSerializer(read_only=True)
+class LocationSerializer(FlexFieldsModelSerializer):
 
     class Meta:
         model = Location
-        #depth = 2
         fields = ["id", "name", "client", "address_1", "address_2", "created", "updated",
                   "city", "state", "zip_code", "phone_number", "mailing_address",  "providers"]
+        expandable_fields = {
+            "providers": (AdminUserSerializer, {"many": True}),
+            "client": (IncludeClientSerializer, )
+        }
 
 
 class ClientSerializer(serializers.ModelSerializer):
@@ -29,10 +30,14 @@ class ClientSerializer(serializers.ModelSerializer):
     locations = serializers.SerializerMethodField()
 
     def get_locations(self, obj):
-        qs = Location.objects.filter(client__id=obj.id)
+        qs = Location.objects.filter(client__id=obj.id).prefetch_related()
         return LocationSerializer(qs, many=True, context=self.context).data
 
     class Meta:
         model = Client
+        depth = 3
         fields = ["id", "name", "address_1", "address_2", "created", "updated",
                   "city", "state", "zip_code", "phone_number", "mailing_address", "locations"]
+        expandable_fields = {
+            "locations": (LocationSerializer),
+        }

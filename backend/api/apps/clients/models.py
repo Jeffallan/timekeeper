@@ -1,6 +1,6 @@
 from django.db import models
 from api.apps.core.models import ContactInfoModel
-from api.apps.users.models import Profile
+from api.apps.users.models import User
 
 
 class Client(ContactInfoModel):
@@ -15,7 +15,7 @@ class Location(ContactInfoModel):
 
     name = models.CharField(max_length=140, unique=True)
     client = models.ForeignKey(to=Client, on_delete=models.CASCADE)
-    providers = models.ManyToManyField(Profile)
+    providers = models.ManyToManyField(User)
 
     def __str__(self) -> str:
         return self.name
