@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 from django.db import models, transaction
 from typing import Any, Optional
 
-from api.apps.users.models import User, Profile
+from api.apps.users.models import User
 from api.apps.users.factory import (AdminUser,
                                     AdminProfile,
                                     ActiveUser,
