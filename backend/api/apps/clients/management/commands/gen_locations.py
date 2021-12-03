@@ -18,11 +18,10 @@ class Command(BaseCommand):
         self.stdout.write("Creating test data.")
         self.stdout.write("Creating clients.")
 
-        models.Client.objects.all().delete()
+        models.Location.objects.all().delete()
+        #for _ in range(CLIENT):
+        #    client = Client()
 
-        for _ in range(CLIENT):
-            client = Client()
-
-        #self.stdout.write("Creating locations.")
-        #for _ in range(LOCATION):
-        #    loc = Location()
+        self.stdout.write("Creating locations.")
+        for _ in range(LOCATION):
+            loc = Location()
