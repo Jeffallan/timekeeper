@@ -14,6 +14,7 @@ const routes = [
   {
     path: "/profile",
     name: "Profile",
+    props: true,
     component: () => import("../views/Profile.vue"),
     meta: {requiresAuth: true},
   },
@@ -22,13 +23,19 @@ const routes = [
     name: "ProfileEdit",
     props: true,
     component: () => import("@/components/forms/ProfileForm.vue"),
-    meda: {requiresAuth: true}
+    meta: {requiresAuth: true}
   },
   {
     path: "/users",
     name: "Directory",
     component: () => import("../views/Directory.vue"),
     meta: {requiresAuth: true},
+  },
+  {
+    path: "/user-create",
+    name: "UserCreate",
+    component: () => import ("@/components/forms/UserForm.vue"),
+    meta: {requiresAuth: true}
   },
   {
   path: "/password-reset",

@@ -70,8 +70,10 @@ export default {
             counter: 0
             }
     },
-    components: {
-        //ProfileForm,
+    props: {
+        id: {
+            type: Number
+        }
     },
     computed: {
         user() {
@@ -86,7 +88,7 @@ export default {
     },
     created() {
         this.$http
-        .get(`${PROFILE}${this.$store.state.users.user.id}/`)
+        .get(`${PROFILE}${this.$props.id}/`)
         .then(r => (this.data = r.data)).catch(e => console.log(e))
     },
     methods: {
@@ -94,7 +96,7 @@ export default {
         handleClick() {
             const data = {...this.data}
             data.id = this.data.user.id
-            Router.push({name: "ProfileEdit", params: {...data}})
+            Router.push({name: "ProfileEdit", params: this.data})
         },
     }
 }

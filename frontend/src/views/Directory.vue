@@ -11,7 +11,7 @@
         <br />
         <b-table striped :items="this.data.items" :fields="this.data.fields">
             <template #cell(name)="d">
-                <router-link to="/profile/">
+                <router-link :to="{ name: 'Profile', params: {id: d.item.id} }">
                     {{d.item.name}}
                 </router-link>
             </template>
@@ -33,6 +33,7 @@
 <script>
 
 import { PROFILE } from "@/util/constants/Urls.js"
+import Router from "@/router/index"
 
 export default {
 
@@ -69,7 +70,7 @@ export default {
     },
     methods: {
         handleClick() {
-            console.log("clicked")
+            Router.push({name:"UserCreate"})
         }
     },
 }

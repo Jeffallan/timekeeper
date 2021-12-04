@@ -5,14 +5,18 @@
         {{title}}
     </b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-    <b-collapse id="nav-collapse" is-nav>
+    <b-collapse id="nav-collapse" is-nav v-if="role">
         <b-navbar-nav class="ml-auto">
           <b-nav-item v-for="u in urls" :key="u.name" class="text-center">
               <router-link :to="u.path">
                 {{u.name}}
               </router-link>
           </b-nav-item>
-
+          <b-nav-item class="text-center">
+            <router-link :to="{name:'Profile', params:{id: this.uid }  }">
+              Profile
+            </router-link>
+          </b-nav-item>
           <b-nav-item class=text-center
             v-if="role">
               <router-link :to="urls[0].path"
@@ -41,7 +45,6 @@ export default {
             urls: [
                 { name: 'Home', path: '/', },
                 { name: "Directory", path: "/users"},
-                { name: 'Profile', path: '/profile' },
            ],
 
           }
@@ -54,7 +57,10 @@ export default {
         computed: {
           role() {
             return this.$store.state.users.user.role
-          }
+          },
+        uid() {
+          return this.$store.state.users.user.id
+        }
         },
     }
 

@@ -57,7 +57,6 @@
     </b-form-group>
       <b-form-group label="Address 2"
                     label-cols="4"
-                    content-colslabel-cols="4"
                     content-cols>
       <b-form-input
         id="address_2"
@@ -131,7 +130,7 @@
 
 <script>
 import { validationMixin } from "vuelidate"
-import { required, numeric, alpha, alphaNum } from "vuelidate/lib/validators"
+import { required, numeric, alpha, minLength, maxLength} from "vuelidate/lib/validators"
 import { PROFILE } from '@/util/constants/Urls.js'
 import Router from "@/router/index"
 
@@ -159,7 +158,6 @@ import Router from "@/router/index"
     props: {
       id: {
         type: Number,
-        default: 0,
       },
 
       phone_number: {
@@ -204,10 +202,7 @@ import Router from "@/router/index"
     },
     validations: {
       form: {
-      //  email: {
-      //    required,
-      //    email,
-      //  },
+
         first_name: {
           required,
           alpha,
@@ -218,11 +213,12 @@ import Router from "@/router/index"
         },
         phone_number: {
           required,
-          //alphaNum,
+          minLength: minLength(10),
+          maxLength: maxLength(10)
         },
         address_1: {
           required,
-          alphaNum
+          //alphaNum
         },
         address_2: {
 
@@ -241,6 +237,10 @@ import Router from "@/router/index"
         },
       },
     },
+    mounted() {
+      console.log(this.props)
+    },
+
     methods: {
       onSubmit() {
 
@@ -250,7 +250,7 @@ import Router from "@/router/index"
         }
         const {id, ...data} = this.$data.form
         this.$http({url: `${PROFILE}${id}/`, data: data, method: "PUT"}).then( () => {
-          Router.push({name: "Profile"})
+          Router.push({name: "Directory"})
         }).catch( e => {
           console.log(e)
         })
@@ -261,15 +261,10 @@ import Router from "@/router/index"
     },
 
       onReset() {
-        //this.form = {
-        //
-        //}
-        //this.$nextTick(() => {
-        //  this.$v.$reset()
-        //})
+
       },
       onCancel() {
-        Router.push({name: "Profile"})
+        Router.push({name: "Profile", params: {...this.$props}})
       }
     },
   }
