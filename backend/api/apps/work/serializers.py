@@ -10,19 +10,19 @@ from api.apps.users.serializers import AdminUserSerializer
 from api.apps.services.serializers import ServiceSerializer
 
 
-class UserFilter(serializers.PrimaryKeyRelatedField):
+class UserFilter(serializers.HyperlinkedRelatedField):
     def get_queryset(self):
         if self.context["request"].user.role == 1:
             return User.objects.all()
         return User.objects.filter(id=self.context["request"].user.id)
 
-class LocationFilter(serializers.PrimaryKeyRelatedField):
+class LocationFilter(serializers.HyperlinkedRelatedField):
     def get_queryset(self):
         if self.context["request"].user.role == 1:
             return Location.objects.all()
         return Location.objects.filter(providers=self.context["request"].user.id, is_active=True)
 
-class ServiceFilter(serializers.PrimaryKeyRelatedField):
+class ServiceFilter(serializers.HyperlinkedRelatedField):
     def get_queryset(self):
         if self.context["request"].user.role == 1:
             return Service.objects.all()
@@ -30,12 +30,12 @@ class ServiceFilter(serializers.PrimaryKeyRelatedField):
 
 
 class WorkPerformedSerializer(FlexFieldsModelSerializer):
-    provider = UserFilter(default=serializers.CurrentUserDefault())
-    location = LocationFilter()
-    service = ServiceFilter()
+    provider = UserFilter(default=serializers.CurrentUserDefault(), view_name="user-detail")
+    location = LocationFilter(view_name="location-detail")
+    service = ServiceFilter(view_name="service-detail")
     class Meta:
         model = WorkPerformed
-        fields = ["location", "service", "service_date", "start_time",
+        fields = ["id", "location", "service", "service_date", "start_time",
                   "stop_time", "provider", "billed", "units"]
         expandable_fields = {
             "location": (LocationSerializer, ),

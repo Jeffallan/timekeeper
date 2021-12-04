@@ -91,6 +91,7 @@ class Profile(ContactInfoModel):
 
     def has_object_read_permission(self, request):
         return True
+
     @staticmethod
     def has_write_permission(request):
         return True
@@ -99,7 +100,7 @@ class Profile(ContactInfoModel):
     def has_create_permission(request):
         return False
 
-    def has_object_write_permission(self, request):
+    def has_object_write_permission(self, request): #includes delete
         return False
 
     def has_object_update_permission(self, request):
