@@ -10,7 +10,7 @@ class IncludeClientSerializer(serializers.ModelSerializer):
 
         model = Client
         fields = ["id", "name", "address_1", "address_2", "created", "updated",
-                  "city", "state", "zip_code", "phone_number", "mailing_address",]
+                  "city", "state", "zip_code", "phone_number", "mailing_address", "is_active"]
 
 
 class LocationSerializer(FlexFieldsModelSerializer):
@@ -18,7 +18,7 @@ class LocationSerializer(FlexFieldsModelSerializer):
     class Meta:
         model = Location
         fields = ["id", "name", "client", "address_1", "address_2", "created", "updated",
-                  "city", "state", "zip_code", "phone_number", "mailing_address",  "providers"]
+                  "city", "state", "zip_code", "phone_number", "mailing_address",  "providers", "is_active"]
         expandable_fields = {
             "providers": (AdminUserSerializer, {"many": True}),
             "client": (IncludeClientSerializer, )
@@ -37,7 +37,7 @@ class ClientSerializer(serializers.ModelSerializer):
         model = Client
         depth = 3
         fields = ["id", "name", "address_1", "address_2", "created", "updated",
-                  "city", "state", "zip_code", "phone_number", "mailing_address", "locations"]
+                  "city", "state", "zip_code", "phone_number", "mailing_address", "locations", "is_active"]
         expandable_fields = {
             "locations": (LocationSerializer),
         }

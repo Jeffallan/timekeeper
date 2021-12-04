@@ -12,5 +12,7 @@ class WorkPerformed(TimestampedModel):
     service_date = models.DateField()
     start_time = models.TimeField()
     stop_time = models.TimeField()
+    billed = models.BooleanField(default=False)
+    units = models.FloatField(default=1)
 
     # TODO add DRF Permissions

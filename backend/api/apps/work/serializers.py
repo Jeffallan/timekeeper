@@ -20,7 +20,7 @@ class LocationFilter(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
         if self.context["request"].user.role == 1:
             return Location.objects.all()
-        return Location.objects.filter(providers=self.context["request"].user.id)
+        return Location.objects.filter(providers=self.context["request"].user.id, is_active=True)
 
 class ServiceFilter(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
@@ -35,7 +35,8 @@ class WorkPerformedSerializer(FlexFieldsModelSerializer):
     service = ServiceFilter()
     class Meta:
         model = WorkPerformed
-        fields = ["location", "service", "service_date", "start_time", "stop_time", "provider"]
+        fields = ["location", "service", "service_date", "start_time",
+                  "stop_time", "provider", "billed", "units"]
         expandable_fields = {
             "location": (LocationSerializer, ),
             "service": (ServiceSerializer,),
