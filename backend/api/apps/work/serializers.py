@@ -8,6 +8,7 @@ from rest_flex_fields import FlexFieldsModelSerializer
 from api.apps.clients.serializers import LocationSerializer
 from api.apps.users.serializers import AdminUserSerializer
 from api.apps.services.serializers import ServiceSerializer
+from dry_rest_permissions.generics import DRYPermissionsField
 
 
 class UserFilter(serializers.HyperlinkedRelatedField):
@@ -36,7 +37,7 @@ class WorkPerformedSerializer(FlexFieldsModelSerializer):
     class Meta:
         model = WorkPerformed
         fields = ["id", "location", "service", "service_date", "start_time",
-                  "stop_time", "provider", "billed", "units"]
+                  "stop_time", "provider", "billed", "units", "permissions"]
         expandable_fields = {
             "location": (LocationSerializer, ),
             "service": (ServiceSerializer,),

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Client, Location
-from api.apps.users.serializers import AdminUserSerializer
+from api.apps.users.serializers import UserSerializer
 from rest_flex_fields import FlexFieldsModelSerializer
 
 
@@ -20,7 +20,7 @@ class LocationSerializer(FlexFieldsModelSerializer):
         fields = ["id", "name", "client", "address_1", "address_2", "created", "updated",
                   "city", "state", "zip_code", "phone_number", "mailing_address",  "providers", "is_active"]
         expandable_fields = {
-            "providers": (AdminUserSerializer, {"many": True}),
+            "providers": (UserSerializer, {"many": True}),
             "client": (IncludeClientSerializer, )
         }
 
