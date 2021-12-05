@@ -36,7 +36,9 @@
         <hr />
         <b-button v-if="this.$store.state.users.user.role == 1"
             variant="outline-danger"
-            class="float-left">
+            class="float-left"
+            @click="handleDeactivate"
+            >
             deactivate
         </b-button>
         <b-button variant="outline-primary"
@@ -52,7 +54,7 @@
 
 <script>
 //import axios from 'axios'
-import { PROFILE } from '@/util/constants/Urls.js'
+import { PROFILE, USERS } from '@/util/constants/Urls.js'
 //import ProfileForm from "@/components/forms/ProfileForm.vue"
 import Router from "@/router/index"
 
@@ -97,6 +99,16 @@ export default {
             const data = {...this.data}
             data.id = this.data.user.id
             Router.push({name: "ProfileEdit", params: this.data})
+        },
+        handleDeactivate() {
+            this.$http({url: `${USERS}${this.data.user.id}/`,
+                        data: {"is_active": false},
+                        method: "PATCH"}).then( () => {
+                        console.log("User Deactivated")
+                        Router.push({name: "Directory"})
+                        }).catch( e => {
+                            console.log(e)
+                        })
         },
     }
 }

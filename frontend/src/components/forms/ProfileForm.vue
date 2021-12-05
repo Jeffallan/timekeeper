@@ -106,15 +106,14 @@
       </b-form-input>
         <b-form-invalid-feedback>This field is required.</b-form-invalid-feedback>
       </b-form-group>
-      
+
       <b-button variant="outline-primary" 
                 class="float-right"
                 @click="onSubmit">submit</b-button>
       <b-button variant="outline-primary" 
                 class=""
                 @click="onCancel">cancel</b-button>
-      
-      
+
     </b-form>
     <br />
     <b-card-footer class="bg-white">
@@ -124,7 +123,7 @@
       </b-button>
     </b-card-footer>
 </b-card>
-  
+
 
 </template>
 
@@ -243,7 +242,7 @@ import Router from "@/router/index"
 
     methods: {
       onSubmit() {
-
+        this.$v.form.$touch()
         if (this.$v.form.$anyError){
           this.onReset()
           return

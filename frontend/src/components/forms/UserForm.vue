@@ -132,7 +132,7 @@ export default {
 
     methods: {
       onSubmit() {
-
+        this.$v.form.$touch()
         if (this.$v.form.$anyError){
           this.onReset()
           return
