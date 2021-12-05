@@ -12,7 +12,14 @@
                 {{u.name}}
               </router-link>
           </b-nav-item>
-          <b-nav-item class="text-center">
+          <span v-if="role==1">
+            <b-nav-item v-for="a in admin" :key="a.name" class="text-center">
+              <router-link :to="a.path">
+                {{a.name}}
+              </router-link>
+          </b-nav-item>
+          </span>
+           <b-nav-item class="text-center">
             <router-link :to="{name:'Profile', params:{id: this.uid }  }">
               Profile
             </router-link>
@@ -45,7 +52,13 @@ export default {
             urls: [
                 { name: 'Home', path: '/', },
                 { name: "Directory", path: "/users"},
+                { name: "Work", path: "/work"}
            ],
+            admin: [
+              { name: "Services", path: "/services"},
+              { name: "Clients", path: "/clients" },
+              { name: "Locations", path: "/locations" }
+            ],
 
           }
         },

@@ -11,7 +11,7 @@
         <br />
         <b-table striped :items="this.data.items" :fields="this.data.fields">
             <template #cell(name)="d">
-                <router-link :to="{ name: 'Profile', params: {id: d.item.id} }">
+                <router-link :to="{ name: 'LocationsDetail', params: {id: d.item.id} }">
                     {{d.item.name}}
                 </router-link>
             </template>
@@ -21,10 +21,10 @@
                      <b-icon icon="telephone" variant="success" font-scale="1.5"></b-icon>
                     </a>
             </template>
-            <template #cell(email)="d">
-                <a :href="'mailto:'+d.item.email">
+            <template #cell(mail)>
+
                 <b-icon icon="envelope" variant="info" font-scale="1.5"></b-icon>
-            </a>
+
             </template>
         </b-table>
     </div>
@@ -32,7 +32,7 @@
 
 <script>
 
-import { PROFILE } from "@/util/constants/Urls.js"
+import { LOCATIONS } from "@/util/constants/Urls.js"
 import Router from "@/router/index"
 
 export default {
@@ -44,21 +44,21 @@ export default {
             data: {
                 results: {},
                 items: [],
-                fields: ["name", "call", "email"],
+                fields: ["name", "call", "mail"],
             },
         }
     },
 
     created() {
-        this.$http.get(PROFILE)
+        this.$http.get(LOCATIONS)
             .then( r => {
                 this.data.results = r.data
                 let data = r.data.results
                 console.log(data)
                 data.forEach(e => {
-                    this.data.items.push({name: e.first_name + " " + e.last_name,
+                    this.data.items.push({name: e.name,
                                           call: e.phone_number,
-                                          email: e.user.email,
+                                          mail: e.mailing_address,
                                           id: e.id
                                          })
                 });

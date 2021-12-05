@@ -57,6 +57,44 @@ const routes = [
     name: "UsernameReset",
     component: () => import ("../views/UsernameReset.vue")
   },
+  {
+    path: "/services",
+    name: "Services",
+    component: () => import("../views/Services.vue"),
+    meta: {requiresAuth: true},
+  },
+  {
+    path: "/clients",
+    name: "Clients",
+    component: () => import("../views/Clients.vue"),
+    meta: {requiresAuth: true},
+  },
+  {
+    path: "/locations",
+    name: "Locations",
+    component: () => import("../views/Locations.vue"),
+    meta: {requiresAuth: true},
+  },
+  {
+    path: "/locations-detail",
+    name: "LocationsDetail",
+    props: true,
+    component: () => import("../views/LocationsDetail.vue"),
+    meta: {requiresAuth: true},
+  },
+  {
+    path: "/locations-client",
+    name: "LocationsClientCreate",
+    props: true,
+    component: () => import("@/components/forms/LocationsClientCreate.vue"),
+    meta: {requiresAuth: true},
+  },
+  {
+    path: "/work",
+    name: "Work",
+    component: () => import("../views/Work.vue"),
+    meta: {requiresAuth: true},
+  },
   //404 ERRORS
   // https://stackoverflow.com/questions/45619407/how-to-create-a-404-component-in-vuejs-using-vue-router
   {

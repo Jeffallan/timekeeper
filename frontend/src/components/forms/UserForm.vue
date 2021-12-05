@@ -161,7 +161,7 @@ export default {
     },
 
       onReset() {
-
+        return
       },
       onCancel() {
         Router.push({name: "Directory"})
