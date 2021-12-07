@@ -70,6 +70,20 @@ const routes = [
     meta: {requiresAuth: true},
   },
   {
+    path: "/clients-detail",
+    name: "LocationsClientDetail",
+    props: true,
+    component: () => import("../views/LocationsClientDetail.vue"),
+    meta: {requiresAuth: true},
+  },
+  {
+    path: "/clients-create",
+    name: "LocationsClientCreate",
+    props: true,
+    component: () => import("@/components/forms/LocationsClientCreate.vue"),
+    meta: {requiresAuth: true},
+  },
+  {
     path: "/locations",
     name: "Locations",
     component: () => import("../views/Locations.vue"),
@@ -77,13 +91,13 @@ const routes = [
   },
   {
     path: "/locations-detail",
-    name: "LocationsDetail",
+    name: "LocationsClientDetail",
     props: true,
-    component: () => import("../views/LocationsDetail.vue"),
+    component: () => import("../views/LocationsClientDetail.vue"),
     meta: {requiresAuth: true},
   },
   {
-    path: "/locations-client",
+    path: "/locations-create",
     name: "LocationsClientCreate",
     props: true,
     component: () => import("@/components/forms/LocationsClientCreate.vue"),

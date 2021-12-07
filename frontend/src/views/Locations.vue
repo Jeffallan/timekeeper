@@ -11,7 +11,7 @@
         <br />
         <b-table striped :items="this.data.items" :fields="this.data.fields">
             <template #cell(name)="d">
-                <router-link :to="{ name: 'LocationsDetail', params: {id: d.item.id} }">
+                <router-link :to="{ name: 'LocationsClientDetail', params: {id: d.item.id, type: 'location'} }" >
                     {{d.item.name}}
                 </router-link>
             </template>
@@ -70,7 +70,7 @@ export default {
     },
     methods: {
         handleClick() {
-            Router.push({name:"LocationsClientCreate", data: {type: "location"}})
+            Router.push({name:"LocationsClientCreate", params: {type: "location"}})
         }
     },
 }

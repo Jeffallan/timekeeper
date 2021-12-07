@@ -54,7 +54,7 @@ export default {
             .then( r => {
                 this.data.results = r.data
                 let data = r.data.results
-                console.log(data)
+                //console.log(data)
                 data.forEach(e => {
                     this.data.items.push({name: e.first_name + " " + e.last_name,
                                           call: e.phone_number,

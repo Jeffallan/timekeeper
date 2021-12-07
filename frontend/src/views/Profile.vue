@@ -29,17 +29,24 @@
         </b-row>
         <b-card-text>
 
-        </b-card-text>
+        </b-card-text> 
         <b-card-text  v-if="this.data.permissions.update == true">
             <h4>Mailing Address</h4>
             <p>{{ this.data.mailing_address }}</p>
         <hr />
-        <b-button v-if="this.$store.state.users.user.role == 1"
+        <b-button v-if="this.$store.state.users.user.role == 1 && this.data.user.is_active == true"
             variant="outline-danger"
             class="float-left"
             @click="handleDeactivate"
             >
             deactivate
+        </b-button>
+        <b-button v-if="this.$store.state.users.user.role == 1 && this.data.user.is_active == false"
+            variant="outline-success"
+            class="float-left"
+            @click="handleDeactivate"
+            >
+            activate
         </b-button>
         <b-button variant="outline-primary"
                   class="float-right"
@@ -102,9 +109,9 @@ export default {
         },
         handleDeactivate() {
             this.$http({url: `${USERS}${this.data.user.id}/`,
-                        data: {"is_active": false},
-                        method: "PATCH"}).then( () => {
-                        console.log("User Deactivated")
+                        data: {"is_active": !this.data.user.is_active},
+                        method: "PATCH"}).then( (r) => {
+                        console.log(r)
                         Router.push({name: "Directory"})
                         }).catch( e => {
                             console.log(e)
