@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        <h1 class="text-center">Locations</h1>
         <b-button variant="outline-primary" 
                   class="float-right my-2"
                   v-if="this.$store.state.users.user.role == 1"
@@ -70,7 +70,7 @@ export default {
     },
     methods: {
         handleClick() {
-            Router.push({name:"UserCreate"})
+            Router.push({name:"LocationsClientCreate", data: {type: "location"}})
         }
     },
 }
