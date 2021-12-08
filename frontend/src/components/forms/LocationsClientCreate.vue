@@ -145,6 +145,7 @@ export default {
           return
         }
         console.log("location refs", this.$refs.location.form.selected)
+        console.log("provider refs", this.$refs.location.form.selected_providers)
       }
     },
   },
