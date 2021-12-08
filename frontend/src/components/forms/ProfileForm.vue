@@ -213,7 +213,7 @@ import Router from "@/router/index"
         phone_number: {
           required,
           minLength: minLength(10),
-          maxLength: maxLength(10)
+          maxLength: maxLength(12)
         },
         address_1: {
           required,
@@ -228,7 +228,9 @@ import Router from "@/router/index"
         },
         state: {
           required,
-          alpha
+          alpha,
+          minLength: minLength(2),
+          maxLength: maxLength(2)
         },
         zip_code: {
           required,
@@ -238,6 +240,7 @@ import Router from "@/router/index"
     },
     mounted() {
       console.log(this.props)
+
     },
 
     methods: {

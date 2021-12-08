@@ -108,10 +108,9 @@
 <script>
 import { validationMixin } from "vuelidate"
 import { required, numeric, alpha, minLength, maxLength} from "vuelidate/lib/validators"
-import Router from "@/router/index"
 
   export default {
-    name: "ProfileForm",
+    name: "GenericContact",
     mixins: [validationMixin,],
 
     data() {
@@ -170,10 +169,7 @@ import Router from "@/router/index"
       }
     },
     computed: {
-    //  showError() {
-    //  },
-    //  //curr_email(){ return this.$store.state.users.user.email },
-    //
+
         getEdit() {
             return `Edit ${this.$props.type}`
         }
@@ -187,7 +183,7 @@ import Router from "@/router/index"
         phone_number: {
           required,
           minLength: minLength(10),
-          maxLength: maxLength(10)
+          maxLength: maxLength(12)
         },
         address_1: {
           required,
@@ -202,7 +198,9 @@ import Router from "@/router/index"
         },
         state: {
           required,
-          alpha
+          alpha,
+          minLength: minLength(2),
+          maxLength: maxLength(2)
         },
         zip_code: {
           required,
@@ -212,32 +210,14 @@ import Router from "@/router/index"
     },
     mounted() {
       console.log(this.props)
+      //this.$v.form.$touch()
     },
     methods: {
-      onSubmit() {
-        this.$v.form.$touch()
-        if (this.$v.form.$anyError){
-          this.onReset()
-          return
-        }
-        const {id, ...data} = this.$data.form
-        this.$http({url: `${id}/`, data: data, method: "PUT"}).then( () => {
-          Router.push({name: "Directory"})
-        }).catch( e => {
-          console.log(e)
-        })
-      },
+
     validationState(name) {
       const { $dirty, $error } = this.$v.form[name]
       return $dirty ? !$error : null
-    },
-
-      onReset() {
-
       },
-      onCancel() {
-        Router.push({name: "Profile", params: {...this.$props}})
-      }
     },
   }
 </script>
