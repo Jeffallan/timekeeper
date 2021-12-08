@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        <h2 class="text-center">Directory</h2>
         <b-button variant="outline-primary" 
                   class="float-right my-2"
                   v-if="this.$store.state.users.user.role == 1"

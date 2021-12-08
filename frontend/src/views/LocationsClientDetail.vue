@@ -1,15 +1,9 @@
 <template>
     <div>
-
-    <b-card class="mx-4 text-center" :key="this.counter">
+    <h2 class="text-center">{{this.data.name}}</h2>
+    <b-card class="mx-4 text-center">
         <b-row >
-            <b-col col sm="12" md="4">
-          <b-card-text>
-            <h4>Name</h4>
-            <p>{{ this.data.name }}</p>
-          </b-card-text>
-          </b-col>
-
+            <hr />
           <b-col col sm="12" md="4">
                 <b-card-text>
                 <h4>Phone</h4>
@@ -21,7 +15,7 @@
           </b-col>
         </b-row>
         <b-card-text>
-
+        <br />
         </b-card-text>
         <b-card-text  v-if="this.$store.state.users.user.role == 1">
             <h4>Mailing Address</h4>
@@ -67,7 +61,6 @@ export default {
             data: {
 
             },
-            counter: 0
             }
     },
     props: {

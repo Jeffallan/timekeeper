@@ -68,7 +68,7 @@ import { PROFILE, USERS } from '@/util/constants/Urls.js'
 import Router from "@/router/index"
 
 export default {
-    name: "USerForm",
+    name: "UserForm",
     mixins: [validationMixin,],
 
     data() {
@@ -87,7 +87,7 @@ export default {
     },
 
      props: {
-    
+
       first_name: {
         type: String,
         default: "",

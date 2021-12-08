@@ -6,6 +6,8 @@
       <b-form  @submit.stop.prevent="onSubmit" @reset="onReset" novalidate >
         <generic-contact ref="contact" v-bind="$data.contact"></generic-contact>
 
+        <location-fields ref="location" v-if="$props.type == 'location'" v-bind="$data.extra"></location-fields>
+
         <b-button variant="outline-primary" 
                 class="float-right"
                 @click="onSubmit">submit</b-button>
@@ -20,12 +22,13 @@
 <script>
 import { LOCATIONS, CLIENTS } from '@/util/constants/Urls.js'
 import GenericContact from "@/components/forms/GenericContact"
+import LocationFields from "@/components/forms/LocationFields"
 import Router from "@/router/index"
 
 
 export default {
   name: "LocationClientCreate",
-  components: {GenericContact,},
+  components: {GenericContact, LocationFields},
 
   data () {
     return {
@@ -40,7 +43,8 @@ export default {
           id: this.$props.id,
       },
       extra: {
-
+        client: this.$props.client,
+        providers: this.$props.providers
       },
     }
   },
@@ -82,6 +86,14 @@ export default {
         type: Number,
         default: null
       },
+      client: {
+        type: Number,
+        default: null
+      },
+      providers: {
+        type: Array,
+        default: () => [],
+      },
   },
   computed: {
     baseURL() {
@@ -102,8 +114,6 @@ export default {
   },
   mounted() {
 
-    console.log(Object.entries(this.$refs.contact))
-
   },
   methods: {
     onReset() {
@@ -115,10 +125,10 @@ export default {
     onSubmit() {
 
       this.$refs.contact.$v.form.$touch()
-        if (this.$refs.contact.$v.form.$anyError){
-          this.onReset()
-          return
-        }
+      if (this.$refs.contact.$v.form.$anyError){
+        this.onReset()
+        return
+      }
       if (this.$props.type == "client"){
         const data = this.$refs.contact.form
 
@@ -128,8 +138,13 @@ export default {
           console.log(e)
         })
       }
-      else {
-        return
+      if (this.$props.type == "location") {
+        this.$refs.location.$v.form.$touch()
+        if (this.$refs.location.$v.form.$anyError){
+          this.onReset()
+          return
+        }
+        console.log("location refs", this.$refs.location.form.selected)
       }
     },
   },

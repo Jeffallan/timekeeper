@@ -1,14 +1,9 @@
 <template>
     <div>
-
-    <b-card class="mx-4 text-center" :key="this.counter">
+        <h2 class="text-center">{{ this.data.first_name }} {{ this.data.last_name }}</h2>
+    <b-card class="mx-4 text-center" >
         <b-row >
-            <b-col col sm="12" md="4">
-          <b-card-text>
-            <h4>Name</h4>
-            <p>{{ this.data.first_name }} {{ this.data.last_name }}</p>
-          </b-card-text>
-          </b-col>
+
           <b-col col sm="12" md="4">
               <b-card-text>
               <h4>Email</h4>
@@ -76,7 +71,6 @@ export default {
                 phone_number: "",
                 permissions: {},
             },
-            counter: 0
             }
     },
     props: {
