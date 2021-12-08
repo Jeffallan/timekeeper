@@ -5,9 +5,20 @@
     <b-card class="mx-3 text-center">
       <b-form  @submit.stop.prevent="onSubmit" @reset="onReset" novalidate >
         <generic-contact ref="contact" v-bind="$data.contact"></generic-contact>
-
+        <single-select ref="client"
+                       v-if="$props.type == 'location'"
+                       type="client"
+                       v-bind=$data.extra.location
+                       :id=$props.client
+                       />
+        <multi-select ref="providers"
+                      v-if="$props.type == 'location'"
+                      v-bind=$data.extra.providers
+                      :providers=$props.providers
+        />
+        <!--
         <location-fields ref="location" v-if="$props.type == 'location'" v-bind="$data.extra"></location-fields>
-
+        -->
         <b-button variant="outline-primary" 
                 class="float-right"
                 @click="onSubmit">submit</b-button>
@@ -22,13 +33,15 @@
 <script>
 import { LOCATIONS, CLIENTS } from '@/util/constants/Urls.js'
 import GenericContact from "@/components/forms/GenericContact"
-import LocationFields from "@/components/forms/LocationFields"
+//import LocationFields from "@/components/forms/LocationFields"
+import SingleSelect from "@/components/forms/SingleSelect"
+import MultiSelect from "@/components/forms/MultiSelect"
 import Router from "@/router/index"
 
 
 export default {
   name: "LocationClientCreate",
-  components: {GenericContact, LocationFields},
+  components: {GenericContact, SingleSelect, MultiSelect}, //LocationFields
 
   data () {
     return {
@@ -139,13 +152,24 @@ export default {
         })
       }
       if (this.$props.type == "location") {
-        this.$refs.location.$v.form.$touch()
-        if (this.$refs.location.$v.form.$anyError){
+        this.$refs.client.$v.form.$touch()
+        if (this.$refs.client.$v.form.$anyError){
           this.onReset()
           return
         }
-        console.log("location refs", this.$refs.location.form.selected)
-        console.log("provider refs", this.$refs.location.form.selected_providers)
+        //console.log("location refs", this.$refs.contact.form.selected)
+        //console.log("client refs", this.$refs.client.form.selected)
+        //console.log("provider refs", this.$refs.providers.form.selected)
+        let data = this.$refs.contact.form
+        data.client = this.$refs.client.form.selected
+        data.providers = this.$refs.providers.form.selected
+        console.log("location payload", data)
+
+        this.$http({url: this.URL, data: data, method: this.METHOD})
+        .then( () => Router.push({name: this.NAME, params: this.PARAMS}))
+        .catch( e => {
+          console.log(e)
+        })
       }
     },
   },

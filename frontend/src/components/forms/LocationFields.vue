@@ -12,7 +12,7 @@
             </b-form-group>
              <b-form-group label="Providers"
                         >
-            <b-form-select v-model="$v.form.selected_providers.$model" 
+            <b-form-select v-model="$v.form.selected_providers.$model"
                           :options="form.provider_options"
                           :state="validationState('selected_providers')"
                           multiple
@@ -34,7 +34,7 @@ export default {
     name: "LocationFields",
     mixins: {validationMixin,},
     mounted() {
-    //console.log("Extra props", Object.entries(this.$props))
+    console.log("Extra props", Object.entries(this.$props.providers))
     this.$http.get(CLIENTS).then(r => {
         r.data.results.forEach(i => {
             this.$data.form.options.push({value: i.id, text: i.name})
@@ -67,7 +67,7 @@ export default {
             form: {
                 selected: this.$props.client,
                 options: [{ value: null, text: 'Make Selection' },],
-                selected_provider: this.$props.providers,
+                selected_provider: this.$props.provider,
                 provider_options: [],
             }
         }
