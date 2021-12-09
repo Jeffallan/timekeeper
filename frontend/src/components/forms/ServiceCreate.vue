@@ -31,7 +31,7 @@
         required >
       </b-form-checkbox>
         <b-form-invalid-feedback>This field is required.</b-form-invalid-feedback>
-      </b-form-group> 
+      </b-form-group>
       </b-col>
       <b-col >
           <b-form-group label="Unit"
@@ -47,12 +47,16 @@
     </b-row>
 
         <multi-select ref="providers"
-                     :providers="PROVIDERS"
-                      v-bind="form.providers"
+                      :providers="this.$route.query.providers"
                       />
 
     </b-form>
-    <b-button @click="onSubmit()">button</b-button>
+    <b-button variant="outline-primary" 
+                class="float-right"
+                @click="onSubmit">submit</b-button>
+      <b-button variant="outline-primary" 
+                class="float-left"
+                @click="onCancel">cancel</b-button>
 </b-card>
 </div>
 
@@ -68,12 +72,15 @@ export default {
     name: "ServiceCreate",
     components: {MultiSelect},
     props: {
-
+        providers: {
+            type: Array,
+            default: () => [],
+        },
     },
     data() {
         return {
             selected: null,
-            results: {},
+            results: [],
             options: [
                 { value: null, display_name: 'Please select an option' },
                 ],
@@ -81,15 +88,17 @@ export default {
                 id: 0,
                 name: "",
                 is_duration: false,
-                providers: []
+                providers: this.$props.providers
             },
         }
     },
     mounted() {
-
+        console.log("Parent", this.$props.providers )
+        console.log("providers", this.$route.query.providers)
         if (this.$route.query.id) {
             this.$http.get(this.URL).then(r => {
                 this.$data.form = r.data
+                this.$data.results = r.data.providers
                 this.$data.selected = r.data.service_unit
             }).catch(e => {
                 console.log(e)
@@ -114,7 +123,9 @@ export default {
             return this.$route.query.id ? `${SERVICES}${this.$route.query.id}/` : SERVICES
         },
         PROVIDERS() {
-            return this.form.providers
+            let p = []
+            p = this.form.providers
+            return p
             // return [1,2,3,4,5,6,7,8,]
         },
     },

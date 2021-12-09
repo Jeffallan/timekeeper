@@ -127,12 +127,12 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: "history",
+  //mode: "history", //breaks password reset and activation flows
   routes
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(page => page.meta.requiresAuth)) {
+  if (to.matched.some(page => page.meta.requiresAuth == true)) {
     if (store.state.users.status == "success") {
       next()
     }

@@ -10,7 +10,9 @@
     <br />
     <b-table striped :items="this.results" :fields="this.fields">
             <template #cell(name)="d">
-                <router-link :to="{ name: 'ServiceCreate', query: {id: d.item.id,} }" >
+                <router-link :to="{ name: 'ServiceCreate', 
+                                    query: {id: d.item.id, type: 'service', providers: d.item.providers},
+                                    }" >
                     {{d.item.name}}
                 </router-link >
             </template>

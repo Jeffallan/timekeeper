@@ -1,35 +1,54 @@
 <template>
     <span>
+
         <b-form-group   label="Providers"
+                    
                         >
-            <b-form-select v-model="form.selected"
-                          :options="form.options"
-                          :state="validationState('selected')"
-                          multiple
-                          required>
-            </b-form-select>
-            <b-form-invalid-feedback>This field is required.</b-form-invalid-feedback>
+
+        <b-button v-b-toggle.collapse small variant="primary" class="float-right"><b-icon icon="plus"></b-icon></b-button>
+
+        <b-collapse id="collapse" class="mt-2">
+
+        <b-form-checkbox-group v-model=form.selected
+                               :options=form.options
+                               value-field="value"
+                               text-field="text"
+                               class="text-left"
+                               stacked>
+
+        </b-form-checkbox-group>
+        </b-collapse>
         </b-form-group>
+        <br />
         </span>
 </template>
 
 <script>
 //import { required, numeric} from "vuelidate/lib/validators"
-import { USERS } from '@/util/constants/Urls.js'
+import { USERS, SERVICES, LOCATIONS } from '@/util/constants/Urls.js'
 
 export default {
     name: "MultiSelect",
 
-    mounted(){
+    beforeMount(){
+        console.log("Props",this.$props.providers)
         this.$http.get(USERS).then(r => {
         r.data.results.forEach(i => {
             this.$data.form.options.push({value: i.id, text: i.email})
         })
-        console.log("child providers", this.$props.providers)
     })
     .catch(e =>{
         console.log(e)
     })
+    //if (Object.keys(this.$route.query).includes("id")){
+    //    this.$http.get(this.URL).then(r => {
+    //        console.log("getting providers")
+    //        r.data.providers.forEach(i => {
+    //            this.$data.form.selected.push({value: i.id, text: i.email})
+    //        })
+    //        console.log("from data", this.form.selected)
+    //    })
+    //}
   },
   props: {
     providers: {
@@ -59,5 +78,12 @@ export default {
         return $dirty ? !$error : null
       },
   },
+  computed: {
+      URL(){
+      return this.$route.query.type == "service" ? 
+                                      `${SERVICES}${this.$route.query.id}/` :
+                                      `${LOCATIONS}${this.$route.query.id}/`
+      },
+  }
 }
 </script>
