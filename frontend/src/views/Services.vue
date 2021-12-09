@@ -11,7 +11,7 @@
     <b-table striped :items="this.results" :fields="this.fields">
             <template #cell(name)="d">
                 <router-link :to="{ name: 'ServiceCreate', 
-                                    query: {id: d.item.id, type: 'service', providers: d.item.providers},
+                                    query: {providers: d.item.providers, id: d.item.id, type: 'service'}
                                     }" >
                     {{d.item.name}}
                 </router-link >

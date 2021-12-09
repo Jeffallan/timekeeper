@@ -2,10 +2,11 @@
     <span>
 
         <b-form-group   label="Providers"
-                    
+                        label-cols="4"
+                        content-cols
                         >
 
-        <b-button v-b-toggle.collapse small variant="primary" class="float-right"><b-icon icon="plus"></b-icon></b-button>
+        <b-button v-b-toggle.collapse small variant="primary" class=""><b-icon icon="arrow-down"></b-icon></b-button>
 
         <b-collapse id="collapse" class="mt-2">
 
@@ -40,15 +41,6 @@ export default {
     .catch(e =>{
         console.log(e)
     })
-    //if (Object.keys(this.$route.query).includes("id")){
-    //    this.$http.get(this.URL).then(r => {
-    //        console.log("getting providers")
-    //        r.data.providers.forEach(i => {
-    //            this.$data.form.selected.push({value: i.id, text: i.email})
-    //        })
-    //        console.log("from data", this.form.selected)
-    //    })
-    //}
   },
   props: {
     providers: {

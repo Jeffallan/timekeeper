@@ -11,7 +11,9 @@
         <br />
         <b-table striped :items="this.data.items" :fields="this.data.fields">
             <template #cell(name)="d">
-                <router-link :to="{ name: 'LocationsClientDetail', params: {id: d.item.id, type: 'location'} }" >
+                <router-link :to="{ name: 'LocationsClientDetail', 
+                                    params: {id: d.item.id, type: 'location'},
+                                    }" >
                     {{d.item.name}}
                 </router-link>
             </template>

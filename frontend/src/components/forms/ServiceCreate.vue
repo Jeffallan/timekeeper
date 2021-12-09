@@ -19,8 +19,20 @@
       </b-form-group>
 
       <b-row>
-        <b-col cols="4">
-      <b-form-group label="Duration"
+       
+      <b-col >
+          <b-form-group label="Unit"
+                        >
+          <b-form-select v-model="selected"
+                         :options="options"
+                         text-field="display_name">
+
+          </b-form-select>
+          <b-form-invalid-feedback>This field is required.</b-form-invalid-feedback>
+          </b-form-group>
+      </b-col>
+       <b-col cols="5">
+      <b-form-group label="Bill Duration"
                   >
 
       <b-form-checkbox
@@ -33,21 +45,10 @@
         <b-form-invalid-feedback>This field is required.</b-form-invalid-feedback>
       </b-form-group>
       </b-col>
-      <b-col >
-          <b-form-group label="Unit"
-                        >
-          <b-form-select v-model="selected"
-                         :options="options"
-                         text-field="display_name">
-
-          </b-form-select>
-          <b-form-invalid-feedback>This field is required.</b-form-invalid-feedback>
-          </b-form-group>
-      </b-col>
     </b-row>
 
         <multi-select ref="providers"
-                      :providers="this.$route.query.providers"
+                      :providers="$route.query.providers"
                       />
 
     </b-form>
@@ -72,29 +73,24 @@ export default {
     name: "ServiceCreate",
     components: {MultiSelect},
     props: {
-        providers: {
-            type: Array,
-            default: () => [],
-        },
+
     },
     data() {
         return {
-            selected: null,
+            selected: "Hour",
             results: [],
             options: [
-                { value: null, display_name: 'Please select an option' },
+                
                 ],
             form: {
-                id: 0,
+                id: "",
                 name: "",
-                is_duration: false,
-                providers: this.$props.providers
+                is_duration: "",
+                providers: [],
             },
         }
     },
     mounted() {
-        console.log("Parent", this.$props.providers )
-        console.log("providers", this.$route.query.providers)
         if (this.$route.query.id) {
             this.$http.get(this.URL).then(r => {
                 this.$data.form = r.data
@@ -106,10 +102,6 @@ export default {
         }
         this.$http.options(SERVICES).then(r => {
             this.options = r.data.actions.POST.service_unit.choices
-            console.log("options", Object.values(this.options))
-            //r.data.actions.POST.service_unit.choices.forEach(i => {
-            //    console.log("foreacj",i)
-            //    this.options.push({ value: i.value, text: i.display_name})
             }).catch(e => {
                 console.log(e)
             })
@@ -122,11 +114,8 @@ export default {
         URL() {
             return this.$route.query.id ? `${SERVICES}${this.$route.query.id}/` : SERVICES
         },
-        PROVIDERS() {
-            let p = []
-            p = this.form.providers
-            return p
-            // return [1,2,3,4,5,6,7,8,]
+        METHOD() {
+            return this.$route.query.id ? "PUT" : "POST"
         },
     },
     validations: {
@@ -142,7 +131,18 @@ export default {
         },
 
     onSubmit() {
-        console.log("Refs", this.$refs.providers.form.selected)
+        let d = this.form
+        delete d.created
+        delete d.updated
+        d.service_unit = this.selected
+        d.providers = this.$refs.providers.form.selected
+        this.$http({url: this.URL, data: d, method: this.METHOD}).then( () => {
+            Router.push({name: "Services"})
+        }).catch(e => {
+            console.log(e)
+        })
+
+        console.log(d)
     },
 
     onCancel() {

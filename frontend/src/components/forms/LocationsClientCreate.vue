@@ -157,9 +157,6 @@ export default {
           this.onReset()
           return
         }
-        //console.log("location refs", this.$refs.contact.form.selected)
-        //console.log("client refs", this.$refs.client.form.selected)
-        //console.log("provider refs", this.$refs.providers.form.selected)
         let data = this.$refs.contact.form
         data.client = this.$refs.client.form.selected
         data.providers = this.$refs.providers.form.selected
