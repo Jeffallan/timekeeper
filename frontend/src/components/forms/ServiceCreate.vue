@@ -1,13 +1,12 @@
 <template>
 <div>
     <h2 class="text-center">{{this.ACTION}} Service</h2>
-<b-card :title=$data.results.name
+<b-card :title=$data.form.name
         class="text-center">
     <b-form  @submit.stop.prevent="onSubmit" @reset="onReset" novalidate >
         <br />
         <b-form-group label="Name"
-                  label-cols="4"
-                  content-cols>
+                 >
       <b-form-input
         id="name"
         v-model="$v.form.name.$model"
@@ -17,14 +16,43 @@
         required >
       </b-form-input>
         <b-form-invalid-feedback>This field is required.</b-form-invalid-feedback>
+      </b-form-group>
+
+      <b-row>
+        <b-col cols="4">
+      <b-form-group label="Duration"
+                  >
+
+      <b-form-checkbox
+        id="duration"
+        v-model="form.is_duration"
+        switch
+        size="lg"
+        required >
+      </b-form-checkbox>
+        <b-form-invalid-feedback>This field is required.</b-form-invalid-feedback>
       </b-form-group> 
+      </b-col>
+      <b-col >
+          <b-form-group label="Unit"
+                        >
+          <b-form-select v-model="selected"
+                         :options="options"
+                         text-field="display_name">
+
+          </b-form-select>
+          <b-form-invalid-feedback>This field is required.</b-form-invalid-feedback>
+          </b-form-group>
+      </b-col>
+    </b-row>
 
         <multi-select ref="providers"
-                      :providers="this.PROVIDERS"
-                      v-bind="$data.form.approved_providers"
+                     :providers="PROVIDERS"
+                      v-bind="form.providers"
                       />
 
     </b-form>
+    <b-button @click="onSubmit()">button</b-button>
 </b-card>
 </div>
 
@@ -40,36 +68,44 @@ export default {
     name: "ServiceCreate",
     components: {MultiSelect},
     props: {
-    //    name: {
-    //        type: String,
-    //        default: ""
-    //    },
-    //    providers: {
-    //        type: Array,
-    //        default: () => []
-    //    },
+
     },
     data() {
         return {
+            selected: null,
             results: {},
-            options: {},
+            options: [
+                { value: null, display_name: 'Please select an option' },
+                ],
             form: {
-
+                id: 0,
+                name: "",
+                is_duration: false,
+                providers: []
             },
         }
     },
     mounted() {
+
         if (this.$route.query.id) {
             this.$http.get(this.URL).then(r => {
                 this.$data.form = r.data
-                console.log("Computed", this.PROVIDERS)
-                console.log("Form",this.$data.form.approved_providers)
-                console.log("Refs", Object.entries(this.$refs.providers.form))
+                this.$data.selected = r.data.service_unit
             }).catch(e => {
                 console.log(e)
             })
         }
-    },
+        this.$http.options(SERVICES).then(r => {
+            this.options = r.data.actions.POST.service_unit.choices
+            console.log("options", Object.values(this.options))
+            //r.data.actions.POST.service_unit.choices.forEach(i => {
+            //    console.log("foreacj",i)
+            //    this.options.push({ value: i.value, text: i.display_name})
+            }).catch(e => {
+                console.log(e)
+            })
+        },
+
     computed: {
         ACTION() {
             return this.$route.query.id ? "Update" : "Create"
@@ -78,11 +114,9 @@ export default {
             return this.$route.query.id ? `${SERVICES}${this.$route.query.id}/` : SERVICES
         },
         PROVIDERS() {
-            if (this.$data.form.approved_providers){
-                return this.$data.form.approved_providers
-            }
-            return []
-        }
+            return this.form.providers
+            // return [1,2,3,4,5,6,7,8,]
+        },
     },
     validations: {
         form: {
@@ -97,6 +131,7 @@ export default {
         },
 
     onSubmit() {
+        console.log("Refs", this.$refs.providers.form.selected)
     },
 
     onCancel() {
@@ -106,6 +141,9 @@ export default {
     validationState(name) {
       const { $dirty, $error } = this.$v.form[name]
       return $dirty ? !$error : null
+      },
+      getProviders(){
+          return this.$data.results.providers
       },
     }
 }

@@ -22,4 +22,4 @@ class ServiceFactory(DjangoModelFactory):
             return
         if extracted:
             for provider in extracted:
-                self.approved_providers.add(provider)
+                self.providers.add(provider)

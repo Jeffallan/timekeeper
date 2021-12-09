@@ -8,7 +8,7 @@ class Service(TimestampedModel):
     name = models.CharField(max_length=140, unique=True)
     service_unit = models.CharField(max_length=25, choices=[(x.value, x.name) for x in ServiceChoices])
     is_duration = models.BooleanField(default=False)
-    approved_providers = models.ManyToManyField(User)
+    providers = models.ManyToManyField(User)
 
     def __str__(self):
         return self.name
@@ -18,7 +18,7 @@ class Service(TimestampedModel):
         return True
 
     def has_object_read_permission(self, request):
-        if request.user in self.approved_providers.all():
+        if request.user in self.providers.all():
             return True
         return request.user.role == 1
 

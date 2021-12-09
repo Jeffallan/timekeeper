@@ -7,7 +7,7 @@ from rest_flex_fields import FlexFieldsModelSerializer
 class ServiceSerializer(FlexFieldsModelSerializer):
     class Meta:
         model = Service
-        fields = ["id", "name", "service_unit", "is_duration", "created", "updated", "approved_providers"]
+        fields = ["id", "name", "service_unit", "is_duration", "created", "updated", "providers"]
         expandable_fields = {
-            "approved_providers": (UserSerializer, {"many": True, "read_only": True})
+            "providers": (UserSerializer, {"many": True, "read_only": True})
         }

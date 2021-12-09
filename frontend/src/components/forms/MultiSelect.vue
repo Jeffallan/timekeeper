@@ -1,9 +1,8 @@
 <template>
     <span>
         <b-form-group   label="Providers"
-                        label-cols="4"
-                        content-cols>
-            <b-form-select v-model="$v.form.selected.$model" 
+                        >
+            <b-form-select v-model="form.selected"
                           :options="form.options"
                           :state="validationState('selected')"
                           multiple
@@ -26,7 +25,7 @@ export default {
         r.data.results.forEach(i => {
             this.$data.form.options.push({value: i.id, text: i.email})
         })
-        console.log("providers", this.$props.providers)
+        console.log("child providers", this.$props.providers)
     })
     .catch(e =>{
         console.log(e)

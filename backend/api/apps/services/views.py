@@ -13,4 +13,4 @@ class ServiceViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         if self.request.user.role == 1:
             return Service.objects.all()
-        return Service.objects.filter(approved_providers__in=[self.request.user.id])
+        return Service.objects.filter(providers__in=[self.request.user.id])
