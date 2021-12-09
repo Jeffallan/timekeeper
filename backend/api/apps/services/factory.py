@@ -16,7 +16,7 @@ class ServiceFactory(DjangoModelFactory):
     service_unit = random.choice([x.name for x in ServiceChoices])
     is_duration =  factory.LazyFunction(active_choice)
 
-    
+    @factory.post_generation
     def approved_providers(self, create, extracted, **kwargs):
         if not create:
             return

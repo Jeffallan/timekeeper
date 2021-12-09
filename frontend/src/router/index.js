@@ -64,6 +64,12 @@ const routes = [
     meta: {requiresAuth: true},
   },
   {
+    path: "/services-create",
+    name: "ServiceCreate",
+    component: () => import("@/components/forms/ServiceCreate.vue"),
+    meta: {requiresAuth: true},
+  },
+  {
     path: "/clients",
     name: "Clients",
     component: () => import("../views/Clients.vue"),

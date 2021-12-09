@@ -126,7 +126,7 @@ export default {
   },
   },
   mounted() {
-
+    
   },
   methods: {
     onReset() {

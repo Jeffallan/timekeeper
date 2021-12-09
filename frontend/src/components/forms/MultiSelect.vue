@@ -19,13 +19,14 @@
 import { USERS } from '@/util/constants/Urls.js'
 
 export default {
-    name: "SingleSelect",
+    name: "MultiSelect",
 
     mounted(){
         this.$http.get(USERS).then(r => {
         r.data.results.forEach(i => {
             this.$data.form.options.push({value: i.id, text: i.email})
         })
+        console.log("providers", this.$props.providers)
     })
     .catch(e =>{
         console.log(e)
