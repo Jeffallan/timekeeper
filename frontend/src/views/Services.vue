@@ -10,7 +10,7 @@
     <br />
     <b-table striped :items="this.results" :fields="this.fields">
             <template #cell(name)="d">
-                <router-link :to="{ name: 'ServiceCreate', 
+                <router-link :to="{ name: 'ServiceDetail', 
                                     query: {providers: d.item.providers, id: d.item.id, type: 'service'}
                                     }" >
                     {{d.item.name}}
@@ -63,5 +63,6 @@ export default {
             Router.push({name: "ServiceCreate"})
         },
     },
+
 }
 </script>
