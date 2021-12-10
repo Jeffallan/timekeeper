@@ -28,6 +28,7 @@
         <b-card-text  v-if="this.data.permissions.update == true">
             <h4>Mailing Address</h4>
             <p>{{ this.data.mailing_address }}</p>
+        </b-card-text>
         <hr />
         <b-button v-if="this.$store.state.users.user.role == 1 && this.data.user.is_active == true"
             variant="outline-danger"
@@ -48,7 +49,7 @@
                   @click="handleClick"
                   >edit
         </b-button>
-        </b-card-text>
+
     </b-card>
     </div>
 

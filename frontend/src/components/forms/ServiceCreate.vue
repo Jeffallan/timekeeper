@@ -52,10 +52,10 @@
                       />
 
     </b-form>
-    <b-button variant="outline-primary" 
+    <b-button variant="outline-primary"
                 class="float-right"
                 @click="onSubmit">submit</b-button>
-      <b-button variant="outline-primary" 
+      <b-button variant="outline-primary"
                 class="float-left"
                 @click="onCancel">cancel</b-button>
 </b-card>

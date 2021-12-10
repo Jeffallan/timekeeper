@@ -51,18 +51,18 @@ export default {
     },
     mounted() {
         this.$http.get(SERVICES).then( r => {
-            r.data.results.forEach(i => {
-                this.results.push(i)
-            })
+            this.results = r.data.results
         }).catch(e =>{
             console.log(e)
         })
+        
     },
     methods: {
         handleClick(){
             Router.push({name: "ServiceCreate"})
         },
     },
+    
 
 }
 </script>

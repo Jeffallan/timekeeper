@@ -6,7 +6,7 @@ from api.apps.clients.models import Location
 from api.apps.users.serializers import IncludeProfileSerializer
 from rest_flex_fields import FlexFieldsModelSerializer
 from api.apps.clients.serializers import LocationSerializer
-from api.apps.users.serializers import AdminUserSerializer
+from api.apps.users.serializers import UserSerializer
 from api.apps.services.serializers import ServiceSerializer
 from dry_rest_permissions.generics import DRYPermissionsField
 
@@ -33,7 +33,8 @@ class ServiceFilter(serializers.HyperlinkedRelatedField):
 class WorkPerformedSerializer(FlexFieldsModelSerializer):
     provider = UserFilter(default=serializers.CurrentUserDefault(), view_name="user-detail")
     location = LocationFilter(view_name="location-detail")
-    service = ServiceFilter(view_name="service-detail")
+    service = ServiceFilter(view_name="service-detail") 
+    permissions = DRYPermissionsField()
     class Meta:
         model = WorkPerformed
         fields = ["id", "location", "service", "service_date", "start_time",
@@ -41,6 +42,6 @@ class WorkPerformedSerializer(FlexFieldsModelSerializer):
         expandable_fields = {
             "location": (LocationSerializer, ),
             "service": (ServiceSerializer,),
-            "provider": (AdminUserSerializer, ),
+            "provider": (UserSerializer, ),
         }
 

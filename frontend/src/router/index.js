@@ -123,6 +123,19 @@ const routes = [
     component: () => import("../views/Work.vue"),
     meta: {requiresAuth: true},
   },
+  {
+    path: "/work-detail",
+    name: "WorkDetail",
+    component: () => import("../views/WorkDetail.vue"),
+    meta: {requiresAuth: true},
+  },
+  {
+    path: "/work-create",
+    name: "WorkCreate",
+    props: true,
+    component: () => import("@/components/forms/WorkForm.vue"),
+    meta: {requiresAuth: true},
+  },
   //404 ERRORS
   // https://stackoverflow.com/questions/45619407/how-to-create-a-404-component-in-vuejs-using-vue-router
   {
