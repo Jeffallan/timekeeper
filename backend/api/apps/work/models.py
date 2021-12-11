@@ -3,6 +3,7 @@ from api.apps.core.models import TimestampedModel
 from api.apps.users.models import User
 from api.apps.services.models import Service
 from api.apps.clients.models import Location
+from api.apps.core.util.services import duration
 
 
 class WorkPerformed(TimestampedModel):
@@ -41,3 +42,12 @@ class WorkPerformed(TimestampedModel):
         if self.billed:
             return False
         return request.user == self.provider or request.user.role == 1
+
+    def save(self, *args, **kwargs) -> None:
+        svc = Service.objects.get(pk=self.service.id)
+        if svc.is_duration:
+            dt = str(self.service_date).split("-")
+            self.units = duration([int(d) for d in dt],
+                                 self.start_time,
+                                 self.stop_time)
+        super().save(*args, **kwargs)

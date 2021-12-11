@@ -11,29 +11,30 @@ from api.apps.services.serializers import ServiceSerializer
 from dry_rest_permissions.generics import DRYPermissionsField
 
 
-class UserFilter(serializers.HyperlinkedRelatedField):
+
+class UserFilter(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
         if self.context["request"].user.role == 1:
             return User.objects.all()
         return User.objects.filter(id=self.context["request"].user.id)
 
-class LocationFilter(serializers.HyperlinkedRelatedField):
+class LocationFilter(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
         if self.context["request"].user.role == 1:
             return Location.objects.all()
         return Location.objects.filter(providers=self.context["request"].user.id, is_active=True)
 
-class ServiceFilter(serializers.HyperlinkedRelatedField):
+class ServiceFilter(serializers.PrimaryKeyRelatedField):
     def get_queryset(self):
         if self.context["request"].user.role == 1:
             return Service.objects.all()
-        return Service.objects.filter(approved_providers=self.context["request"].user.id)
+        return Service.objects.filter(providers=self.context["request"].user.id)
 
 
 class WorkPerformedSerializer(FlexFieldsModelSerializer):
-    provider = UserFilter(default=serializers.CurrentUserDefault(), view_name="user-detail")
-    location = LocationFilter(view_name="location-detail")
-    service = ServiceFilter(view_name="service-detail") 
+    provider = UserFilter(default=serializers.CurrentUserDefault(),)
+    location = LocationFilter()
+    service = ServiceFilter()
     permissions = DRYPermissionsField()
     class Meta:
         model = WorkPerformed

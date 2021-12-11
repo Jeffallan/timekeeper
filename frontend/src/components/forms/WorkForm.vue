@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2 class="text-center">{{this.ACTION}} Service</h2>
+        <h2 class="text-center">{{this.ACTION}} Work Item</h2>
         <b-card >
             <b-form @submit.stop.prevent="onSubmit" @reset="onReset" novalidate>
                 <br />
@@ -14,7 +14,7 @@
                                   @updateComponent="handleUpdate"
                                   ref="service" />
                     <single-select type="user"
-                                  :id="parseInt($route.query.provider)"
+                                  :id="USER"
                                   ref="provider"
                                   :disabled="CONTRACTOR"
                                   />
@@ -156,12 +156,12 @@ export default {
     validations: {
         form: {
             billed: {required},
-            units: {required: requiredUnless("isDuration")},
-            provider: {required},
+            units: {required: requiredUnless(function () {
+                return this.$data.is_duration
+            })},
             stop_time: {required},
             start_time: {required},
             service_date: {required},
-            location: {required},
         },
     },
     mounted() {
@@ -173,12 +173,9 @@ export default {
                 this.form.id = r.data.id
                 this.form.billed = r.data.billed
                 this.form.units = r.data.units
-                this.form.provider = r.data.provider.id
                 this.form.stop_time = r.data.stop_time
                 this.form.start_time = r.data.start_time
                 this.form.service_date = r.data.service_date
-                this.form.service = r.data.service.id
-                this.form.location = r.data.location.id
 
                 this.$data.is_duration = r.data.service.is_duration
 
@@ -198,14 +195,22 @@ export default {
         },
         onSubmit(){
             this.$v.form.$touch()
-            if (this.$v.form.$anyError){
+            this.$refs.provider.$v.form.$touch()
+            this.$refs.service.$v.form.$touch()
+            this.$refs.location.$v.form.$touch()
+
+            if (this.$v.form.$anyError || this.$refs.provider.$v.form.$anyError ||
+                this.$refs.service.$v.form.$anyError || this.$refs.location.$v.form.$anyError){
                this.onReset()
                return
              }
-             //TODO add refs to data
-             // TODO remove hyperlinked related field from serializer refs.
-            this.$http({url: this.URL, data: this.form, method: this.METHOD}).then( r =>{
-                console.log(r.results)
+            let data = this.form
+            data.service = this.$refs.service.form.selected
+            data.location = this.$refs.location.form.selected
+            data.provider = this.$refs.provider.form.selected
+            data.billed = false
+            this.$http({url: this.URL, data: data, method: this.METHOD}).then( r =>{
+                console.log(r.data)
                 Router.go(-1)
             }).catch(e => {
                 console.log(e)
@@ -221,11 +226,14 @@ export default {
         handleUpdate(){
             this.$http.get(`${SERVICES}${this.$refs.service.form.selected}/`).then( r => {
                 this.$data.is_duration = r.data.is_duration
+                if (r.data.is_duration && !this.form.units){
+                    this.form.units = 1
+                }
             })
         },
     },
     computed: {
-         ACTION() {
+        ACTION() {
             return this.$route.query.id ? "Update" : "Create"
         },
         URL() {
@@ -236,7 +244,13 @@ export default {
         },
         CONTRACTOR() {
             return this.$store.state.users.user.role != 1
-        }
+        },
+        USER() {
+            if (this.$route.query.provider && !this.CONTRACTOR) {
+                return parseInt(this.$route.query.provider)
+            }
+            return this.$store.state.users.user.id
+        },
     },
 }
 </script>
