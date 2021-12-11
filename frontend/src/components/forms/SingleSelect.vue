@@ -6,6 +6,8 @@
             <b-form-select v-model="$v.form.selected.$model" 
                           :options="form.options"
                           :state="validationState('selected')"
+                          size="sm"
+                          :disabled="$props.disabled"
                           required>
             </b-form-select>
             <b-form-invalid-feedback>This field is required.</b-form-invalid-feedback>
@@ -30,6 +32,9 @@ export default {
         console.log(e)
     })
   },
+  updated() {
+      this.$emit("updateComponent")
+  },
   props: {
     type: {
       validator: function (value) {
@@ -39,13 +44,19 @@ export default {
     id: {
         type: Number,
         default: null,
+    },
+    disabled: {
+        type: Boolean,
+        default: false,
     }
   },
   data() {
       return {
       form:{
           selected: this.$props.id,
-          options: [{ value: null, text: 'Make Selection' },],
+          options: [{ value: NaN, text: 'Make Selection' },
+
+        ],
       },
     }
   },

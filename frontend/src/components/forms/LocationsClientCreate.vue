@@ -101,7 +101,7 @@ export default {
       },
       client: {
         type: Number,
-        default: null
+        default: NaN
       },
       providers: {
         type: Array,
