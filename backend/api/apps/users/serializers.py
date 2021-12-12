@@ -54,7 +54,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     permissions = DRYPermissionsField()
     class Meta:
         model = Profile
-        fields = ["id", "first_name", "last_name", "address_1", "address_2", "city", "state", "zip_code", "phone_number", "mailing_address", "user", "permissions"]
+        fields = ["id", "first_name", "last_name", "phone_number", "user", "permissions"]
+        #"address_1", "address_2", "city", "state", "zip_code", "mailing_address",
 
 class AdminProfileSerializer(serializers.ModelSerializer):
     user = AdminUserSerializer(read_only=True)
