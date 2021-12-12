@@ -6,6 +6,9 @@ services:
     restart: unless-stopped
     volumes: 
       - ./db:/db
+    networks: 
+      - internal
+
   web:
     restart: unless-stopped
     image: web
@@ -19,19 +22,25 @@ services:
                ./manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./backend:/code/
+    environment: 
+      - VIRTUAL_HOST=api.app.local           #TODO change for production
+      - LETSENCRYPT_HOST-api.app.local       #TODO change for production
     env_file:
       - .ENV
     ports:
       - "8000:8000"
     depends_on:
       - postgres
-    env_file:
-      - .ENV
+    networks: 
+      - internal
 
   mailhog:
     logging:
       driver: none
     image: mailhog/mailhog:v1.0.0
+    environment: 
+      - VIRTUAL_HOST=mail.app.local           #TODO change for production
+      - LETSENCRYPT_HOST-mail.app.local       #TODO change for production
     expose:
       - 1025
       - 8025
@@ -39,6 +48,8 @@ services:
         - "8025:8025"
         - "1025:1025"
     restart: unless-stopped
+    networks: 
+      - internal
 
   frontend:
     logging:
@@ -48,6 +59,9 @@ services:
       - 3000:3000
     volumes:
       - ./frontend:/code/
+    environment: 
+      - VIRTUAL_HOST=app.local           #TODO change for production
+      - LETSENCRYPT_HOST=app.local       #TODO change for production
     env_file:
       - .ENV
     restart: unless-stopped
@@ -55,4 +69,49 @@ services:
     stdin_open: true
     entrypoint: "/bin/sh"
     command: "-c \"if [ ! -d \"node_modules\" ]; then npm i; fi; npm run serve \""
+    networks: 
+      - internal
+
+  nginx-proxy: 
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on: 
+      - frontend
+      - web
+      - postgres
+    environment:
+      - DEFAULT_HOST=app.local #TODO change for production
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/certs:/etc/nginx/certs
+      - ./nginx/html:/usr/share/nginx/html
+      # https://github.com/nginx-proxy/nginx-proxy/issues/398 custom templates in vhost.d
+    restart: unless-stopped
+    networks:
+      - internal
+    labels:
+      com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
+
+  # https://github.com/nginx-proxy/acme-companion
+
+  letsencrypt:
+    image: nginxproxy/acme-companion
+    depends_on:
+      - nginx-proxy
+    environment:
+        - DEFAULT_EMAIL=mail@yourdomain.com #TODO change for production
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/certs:/etc/nginx/certs
+      - ./nginx/html:/usr/share/nginx/html
+      - ./acme:/etc/acme.sh
+
+    networks:
+      - internal
+networks: 
+  internal:
 
