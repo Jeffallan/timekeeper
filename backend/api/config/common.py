@@ -31,6 +31,9 @@ class Common(Configuration):
         # Your apps
         'api.apps.users',
         'api.apps.core',
+        "api.apps.clients",
+        "api.apps.services",
+        "api.apps.work",
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
@@ -45,7 +48,6 @@ class Common(Configuration):
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
     )
 
-    ALLOWED_HOSTS = ["*"]
     ROOT_URLCONF = 'api.urls'
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
     WSGI_APPLICATION = 'api.wsgi.application'
@@ -57,13 +59,17 @@ class Common(Configuration):
         ('Author', 'info@ravenscurity.net'),
     )
 
-    # Postgres
     DATABASES = {
-        'default': dj_database_url.config(
-            default=os.environ.get("PG_STRING"),
-            conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
-        )
-    }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get("POSTGRES_DB"),
+        'USER': os.environ.get("POSTGRES_USER"),
+        'PASSWORD': os.environ.get("POSTGRES_PASSWORD"),
+        'HOST': 'postgres',
+        'PORT': '5432',
+    },
+}
+
 
     # General
     APPEND_SLASH = False
@@ -192,7 +198,7 @@ class Common(Configuration):
     # Django Rest Framework
     REST_FRAMEWORK = {
         'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-        'PAGE_SIZE': int(os.getenv('DJANGO_PAGINATION_LIMIT', 10)),
+        'PAGE_SIZE': int(os.getenv('DJANGO_PAGINATION_LIMIT', 500)),
         'DATETIME_FORMAT': '%Y-%m-%dT%H:%M:%S%z',
         'DEFAULT_RENDERER_CLASSES': (
             'rest_framework.renderers.JSONRenderer',
@@ -243,3 +249,12 @@ class Common(Configuration):
                             'username_reset': 'api.apps.core.email.UsernameResetEmail',
                         }
             }
+
+
+    CORS_ORIGIN_WHITELIST = [os.environ.get("CORS_WHITELIST")
+                            ]
+    ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]
+
+    CSRF_COOKIE_SAMESITE="Strict"
+    SESSION_COOKIE_SAMESITE="Strict"
+    #CSRF_TRUSTED_ORIGINS=[] buy default

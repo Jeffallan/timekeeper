@@ -16,7 +16,7 @@ Vue.use(Vuex)
     users,
   },
 plugins: [createPersistedState({
-    storage: { storage: window.sessionStorage,
+    storage: { storage: window.localStorage,
                getItem: (key) => ls.get(key),
                setItem: (key, value) => ls.set(key, value),
                removeItem: (key) => ls.remove(key),

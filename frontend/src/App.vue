@@ -64,20 +64,18 @@ html, body {
   color: #42b983;
 }
 .appWrapper {
-  /* view height set to 100% ?*/
-  /*
-  padding-bottom: 3.5em;
-  */
+
   padding-left: 0;
   padding-right: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100vh
+  min-height: 100vh;
 }
 .routerWrapper {
   padding-top: 15px;
   padding-bottom: 15px;
+  max-width: 800px
 }
 
 </style>

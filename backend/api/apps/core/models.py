@@ -23,12 +23,7 @@ class ContactInfoModel(TimestampedModel):
 
     @property
     def mailing_address(self):
-        s = "{} {} {} {} {}".format(
-                                        self.address_1,
-                                        self.address_2,
-                                        self.city,
-                                        self.state,
-                                        self.zip_code
-                                      )
-        return s.replace("None", "")
 
+        if self.address_1 and self.city and self.state and self.zip_code:
+            return f"{self.address_1} {self.address_2} {self.city} {self.state} {self.zip_code}".replace("  ", " ")
+        return ""

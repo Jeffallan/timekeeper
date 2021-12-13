@@ -57,7 +57,6 @@
     </b-form-group>
       <b-form-group label="Address 2"
                     label-cols="4"
-                    content-colslabel-cols="4"
                     content-cols>
       <b-form-input
         id="address_2"
@@ -107,15 +106,14 @@
       </b-form-input>
         <b-form-invalid-feedback>This field is required.</b-form-invalid-feedback>
       </b-form-group>
-      
+
       <b-button variant="outline-primary" 
                 class="float-right"
                 @click="onSubmit">submit</b-button>
       <b-button variant="outline-primary" 
                 class=""
                 @click="onCancel">cancel</b-button>
-      
-      
+
     </b-form>
     <br />
     <b-card-footer class="bg-white">
@@ -125,13 +123,13 @@
       </b-button>
     </b-card-footer>
 </b-card>
-  
+
 
 </template>
 
 <script>
 import { validationMixin } from "vuelidate"
-import { required, numeric, alpha, alphaNum } from "vuelidate/lib/validators"
+import { required, numeric, alpha, minLength, maxLength} from "vuelidate/lib/validators"
 import { PROFILE } from '@/util/constants/Urls.js'
 import Router from "@/router/index"
 
@@ -159,7 +157,6 @@ import Router from "@/router/index"
     props: {
       id: {
         type: Number,
-        default: 0,
       },
 
       phone_number: {
@@ -204,10 +201,7 @@ import Router from "@/router/index"
     },
     validations: {
       form: {
-      //  email: {
-      //    required,
-      //    email,
-      //  },
+
         first_name: {
           required,
           alpha,
@@ -218,11 +212,12 @@ import Router from "@/router/index"
         },
         phone_number: {
           required,
-          //alphaNum,
+          minLength: minLength(10),
+          maxLength: maxLength(12)
         },
         address_1: {
           required,
-          alphaNum
+          //alphaNum
         },
         address_2: {
 
@@ -233,7 +228,9 @@ import Router from "@/router/index"
         },
         state: {
           required,
-          alpha
+          alpha,
+          minLength: minLength(2),
+          maxLength: maxLength(2)
         },
         zip_code: {
           required,
@@ -241,16 +238,21 @@ import Router from "@/router/index"
         },
       },
     },
+    mounted() {
+      console.log(this.props)
+
+    },
+
     methods: {
       onSubmit() {
-
+        this.$v.form.$touch()
         if (this.$v.form.$anyError){
           this.onReset()
           return
         }
         const {id, ...data} = this.$data.form
         this.$http({url: `${PROFILE}${id}/`, data: data, method: "PUT"}).then( () => {
-          Router.push({name: "Profile"})
+          Router.push({name: "Directory"})
         }).catch( e => {
           console.log(e)
         })
@@ -261,15 +263,10 @@ import Router from "@/router/index"
     },
 
       onReset() {
-        //this.form = {
-        //
-        //}
-        //this.$nextTick(() => {
-        //  this.$v.$reset()
-        //})
+
       },
       onCancel() {
-        Router.push({name: "Profile"})
+        Router.push({name: "Profile", params: {...this.$props}})
       }
     },
   }

@@ -1,14 +1,9 @@
 <template>
     <div>
-
-    <b-card class="mx-4 text-center" :key="this.counter">
+        <h2 class="text-center">{{ this.data.first_name }} {{ this.data.last_name }}</h2>
+    <b-card class="mx-4 text-center" >
         <b-row >
-            <b-col col sm="12" md="4">
-          <b-card-text>
-            <h4>Name</h4>
-            <p>{{ this.data.first_name }} {{ this.data.last_name }}</p>
-          </b-card-text>
-          </b-col>
+
           <b-col col sm="12" md="4">
               <b-card-text>
               <h4>Email</h4>
@@ -29,22 +24,32 @@
         </b-row>
         <b-card-text>
 
-        </b-card-text>
+        </b-card-text> 
         <b-card-text  v-if="this.data.permissions.update == true">
             <h4>Mailing Address</h4>
             <p>{{ this.data.mailing_address }}</p>
+        </b-card-text>
         <hr />
-        <b-button v-if="this.$store.state.users.user.role == 1"
+        <b-button v-if="this.$store.state.users.user.role == 1 && this.data.user.is_active == true"
             variant="outline-danger"
-            class="float-left">
+            class="float-left"
+            @click="handleDeactivate"
+            >
             deactivate
+        </b-button>
+        <b-button v-if="this.$store.state.users.user.role == 1 && this.data.user.is_active == false"
+            variant="outline-success"
+            class="float-left"
+            @click="handleDeactivate"
+            >
+            activate
         </b-button>
         <b-button variant="outline-primary"
                   class="float-right"
                   @click="handleClick"
                   >edit
         </b-button>
-        </b-card-text>
+
     </b-card>
     </div>
 
@@ -52,7 +57,7 @@
 
 <script>
 //import axios from 'axios'
-import { PROFILE } from '@/util/constants/Urls.js'
+import { PROFILE, USERS } from '@/util/constants/Urls.js'
 //import ProfileForm from "@/components/forms/ProfileForm.vue"
 import Router from "@/router/index"
 
@@ -67,11 +72,12 @@ export default {
                 phone_number: "",
                 permissions: {},
             },
-            counter: 0
             }
     },
-    components: {
-        //ProfileForm,
+    props: {
+        id: {
+            type: Number
+        }
     },
     computed: {
         user() {
@@ -86,7 +92,7 @@ export default {
     },
     created() {
         this.$http
-        .get(`${PROFILE}${this.$store.state.users.user.id}/`)
+        .get(`${PROFILE}${this.$props.id}/`)
         .then(r => (this.data = r.data)).catch(e => console.log(e))
     },
     methods: {
@@ -94,7 +100,17 @@ export default {
         handleClick() {
             const data = {...this.data}
             data.id = this.data.user.id
-            Router.push({name: "ProfileEdit", params: {...data}})
+            Router.push({name: "ProfileEdit", params: this.data})
+        },
+        handleDeactivate() {
+            this.$http({url: `${USERS}${this.data.user.id}/`,
+                        data: {"is_active": !this.data.user.is_active},
+                        method: "PATCH"}).then( (r) => {
+                        console.log(r)
+                        Router.push({name: "Directory"})
+                        }).catch( e => {
+                            console.log(e)
+                        })
         },
     }
 }

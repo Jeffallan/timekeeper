@@ -1,0 +1,112 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:11.6
+    restart: unless-stopped
+    env_file:
+      - .ENV
+    volumes: 
+      - ./db:/db
+    networks: 
+      - internal
+
+  web:
+    restart: unless-stopped
+    image: web
+    build:
+      context: .
+      dockerfile: ./backend/containers/RestDockerFile
+    command: >
+      bash -c "python wait_for_postgres.py &&
+               ./manage.py migrate &&
+               gunicorn -b 0.0.0.0:8080 --workers=3 wsgi"
+    volumes:
+      - ./backend:/code/
+    environment:
+      - VIRTUAL_HOST=api.raventi.me           #TODO change for production
+      - LETSENCRYPT_HOST=api.raventi.me          #TODO change for production
+    env_file:
+      - .ENV
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    networks: 
+      - internal
+  #TODO remove the mailhog container for production
+  #mailhog:
+  #  logging:
+  #    driver: none
+  #  image: mailhog/mailhog:v1.0.0
+  #  expose:
+  #    - 1025
+  #    - 8025
+  #  ports:
+  #      - "8025:8025"
+  #      - "1025:1025"
+  #  restart: unless-stopped
+  #  networks: 
+  #    - internal
+
+  frontend:
+    image: node:15.6.0-alpine3.12
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/code/
+    environment: 
+      - VIRTUAL_HOST=raventi.me           #TODO change for production
+      - LETSENCRYPT_HOST=raventi.me       #TODO change for production
+    env_file:
+      - .ENV
+    restart: unless-stopped
+    working_dir: /code/
+    stdin_open: true
+    entrypoint: "/bin/sh"
+    command: "-c \"if [ ! -d \"node_modules\" ]; then npm i; fi; npm run build \""
+    networks: 
+      - internal
+
+  nginx-proxy: 
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on: 
+      - frontend
+      - web
+      - postgres
+    environment:
+      - DEFAULT_HOST=raventi.me #TODO change for production
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/certs:/etc/nginx/certs
+      - ./nginx/html:/usr/share/nginx/html
+      # https://github.com/nginx-proxy/nginx-proxy/issues/398 custom templates in vhost.d
+    restart: unless-stopped
+    networks:
+      - internal
+    labels:
+      com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
+
+  # https://github.com/nginx-proxy/acme-companion
+    #TODO add this container for production
+  letsencrypt:
+    image: nginxproxy/acme-companion
+    depends_on:
+      - nginx-proxy
+    environment:
+        - DEFAULT_EMAIL=webmaster@raventi.me #TODO change for production
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/certs:/etc/nginx/certs
+      - ./nginx/html:/usr/share/nginx/html
+      - ./acme:/etc/acme.sh
+
+    networks:
+      - internal
+networks:
+  internal:

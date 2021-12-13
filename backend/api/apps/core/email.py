@@ -30,7 +30,7 @@ class PasswordResetEmail(BaseEmailMessage):
     def get_context_data(self):
         # PasswordResetEmail can be deleted
         context = super().get_context_data()
-        if self.usr:
+        if hasattr(self, "usr"):
             user = self.usr
         else:
             user = context.get("user")
