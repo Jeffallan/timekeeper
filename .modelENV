@@ -1,12 +1,12 @@
-VUE_APP_BACKEND_URL=http://localhost:8000/api/v1/
+VUE_APP_BACKEND_URL=http://api.app.local/api/v1/
 
-FRONTEND_URL=http://localhost:3000/
+FRONTEND_URL=http://app.local/
 DJANGO_SECRET_KEY=local
 POSTGRES_CONN_MAX_AGE=600
 
 CORS_WHITELIST=http://localhost:3000
 
-ALLOWED_HOSTS=localhost
+ALLOWED_HOSTS=api.app.local
 
 POSTGRES_USER=postgres
 

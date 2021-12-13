@@ -34,3 +34,5 @@ class Production(Common):
 
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
+    CORS_ORIGIN_WHITELIST = [os.environ.get("CORS_WHITELIST")
+                            ]
