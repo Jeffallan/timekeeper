@@ -1,5 +1,5 @@
 from rest_framework.response import Response
-from rest_framework import serializers, status, viewsets, mixins, generics
+from rest_framework import request, serializers, status, viewsets, mixins, generics
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.decorators import action, permission_classes
 from .models import Profile, User
@@ -27,6 +27,13 @@ class ProfileViewset(viewsets.ModelViewSet):
     permission_classes = (DRYPermissions,)
 
     def get_serializer_class(self):
-        if self.request.user.role == 1:
-            return AdminProfileSerializer
-        return ProfileSerializer
+        if self.action == "list":
+            return ProfileSerializer
+        try:
+            profile_id = self.request.parser_context["kwargs"]["pk"]
+            profile = Profile.objects.get(pk=profile_id)
+            if self.request.user.role == 1 or self.request.user.id == profile.user.id:
+                return AdminProfileSerializer
+            return ProfileSerializer
+        except KeyError:
+            return ProfileSerializer

@@ -1,17 +1,17 @@
 <template>
     <div>
-
+        <h2 class="text-center">Directory</h2>
         <b-button variant="outline-primary" 
                   class="float-right my-2"
                   v-if="this.$store.state.users.user.role == 1"
-                  @click="handleClick">
+                  @click="handleClick"> add
             <b-icon icon="plus"></b-icon>
         </b-button>
  
         <br />
         <b-table striped :items="this.data.items" :fields="this.data.fields">
             <template #cell(name)="d">
-                <router-link to="/profile/">
+                <router-link :to="{ name: 'Profile', params: {id: d.item.id} }">
                     {{d.item.name}}
                 </router-link>
             </template>
@@ -33,6 +33,7 @@
 <script>
 
 import { PROFILE } from "@/util/constants/Urls.js"
+import Router from "@/router/index"
 
 export default {
 
@@ -53,7 +54,7 @@ export default {
             .then( r => {
                 this.data.results = r.data
                 let data = r.data.results
-                console.log(data)
+                //console.log(data)
                 data.forEach(e => {
                     this.data.items.push({name: e.first_name + " " + e.last_name,
                                           call: e.phone_number,
@@ -69,7 +70,7 @@ export default {
     },
     methods: {
         handleClick() {
-            console.log("clicked")
+            Router.push({name:"UserCreate"})
         }
     },
 }

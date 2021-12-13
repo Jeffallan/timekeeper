@@ -171,3 +171,5 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 .ENV
+acme
+nginx
