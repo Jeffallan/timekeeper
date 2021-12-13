@@ -48,7 +48,6 @@ class Common(Configuration):
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
     )
 
-    ALLOWED_HOSTS = ["*"]
     ROOT_URLCONF = 'api.urls'
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
     WSGI_APPLICATION = 'api.wsgi.application'
@@ -246,3 +245,12 @@ class Common(Configuration):
                             'username_reset': 'api.apps.core.email.UsernameResetEmail',
                         }
             }
+
+    
+    CORS_ORIGIN_WHITELIST = [os.environ.get("CORS_WHITELIST")
+                            ]
+    ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]
+    
+    CSRF_COOKIE_SAMESITE="Strict"
+    SESSION_COOKIE_SAMESITE="Strict"
+    #CSRF_TRUSTED_ORIGINS=[] bu default

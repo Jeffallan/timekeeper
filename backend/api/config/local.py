@@ -23,11 +23,3 @@ class Local(Common):
     EMAIL_HOST = 'mailhog'
     EMAIL_PORT = 1025
     #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-    CORS_ORIGIN_WHITELIST = [
-                            #"http://localhost:3000",
-                            #"http://127.0.0.1:3000",
-                            "http://frontend:3000",
-                            "http://app.local"
-                            ]
-
