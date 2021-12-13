@@ -59,13 +59,17 @@ class Common(Configuration):
         ('Author', 'info@ravenscurity.net'),
     )
 
-    # Postgres
     DATABASES = {
-        'default': dj_database_url.config(
-            default=os.environ.get("PG_STRING"),
-            conn_max_age=int(os.getenv('POSTGRES_CONN_MAX_AGE', 600))
-        )
-    }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get("POSTGRES_DB"),
+        'USER': os.environ.get("POSTGRES_USER"),
+        'PASSWORD': os.environ.get("POSTGRES_PASSWORD"),
+        'HOST': 'postgres',
+        'PORT': '5432',
+    },
+}
+
 
     # General
     APPEND_SLASH = False

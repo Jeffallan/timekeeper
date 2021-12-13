@@ -4,6 +4,8 @@ services:
   postgres:
     image: postgres:11.6
     restart: unless-stopped
+    env_file:
+      - .ENV
     volumes: 
       - ./db:/db
     networks: 
@@ -15,6 +17,8 @@ services:
     build:
       context: .
       dockerfile: ./backend/containers/RestDockerFile
+      #TODO do not make migrations in production and change server to guicorn
+      #gunicorn -b 0.0.0.0:8080 wsgi &
     command: >
       bash -c "python wait_for_postgres.py &&
               ./manage.py makemigrations &&
@@ -22,7 +26,7 @@ services:
                ./manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./backend:/code/
-    environment: 
+    environment:
       - VIRTUAL_HOST=api.app.local           #TODO change for production
       - LETSENCRYPT_HOST-api.app.local       #TODO change for production
     env_file:
@@ -33,7 +37,7 @@ services:
       - postgres
     networks: 
       - internal
-
+  #TODO remove the mailhog container for production
   mailhog:
     logging:
       driver: none
@@ -52,6 +56,7 @@ services:
       - internal
 
   frontend:
+    #TODO remove logging: for production
     logging:
       driver: none
     image: node:15.6.0-alpine3.12
@@ -68,12 +73,16 @@ services:
     working_dir: /code/
     stdin_open: true
     entrypoint: "/bin/sh"
+    #TODO change to npm run build
     command: "-c \"if [ ! -d \"node_modules\" ]; then npm i; fi; npm run serve \""
     networks: 
       - internal
 
   nginx-proxy: 
     image: jwilder/nginx-proxy
+    #TODO remove logging: for production
+    logging:
+      driver: none
     ports:
       - "80:80"
       - "443:443"
@@ -96,22 +105,22 @@ services:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
 
   # https://github.com/nginx-proxy/acme-companion
-
-  letsencrypt:
-    image: nginxproxy/acme-companion
-    depends_on:
-      - nginx-proxy
-    environment:
-        - DEFAULT_EMAIL=mail@yourdomain.com #TODO change for production
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./nginx/vhost.d:/etc/nginx/vhost.d
-      - ./nginx/certs:/etc/nginx/certs
-      - ./nginx/html:/usr/share/nginx/html
-      - ./acme:/etc/acme.sh
-
-    networks:
-      - internal
+    #TODO add this container for production
+#  letsencrypt:
+#    image: nginxproxy/acme-companion
+#    depends_on:
+#      - nginx-proxy
+#    environment:
+#        - DEFAULT_EMAIL=mail@yourdomain.com #TODO change for production
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock:ro
+#      - ./nginx/vhost.d:/etc/nginx/vhost.d
+#      - ./nginx/certs:/etc/nginx/certs
+#      - ./nginx/html:/usr/share/nginx/html
+#      - ./acme:/etc/acme.sh
+#
+#    networks:
+#      - internal
 networks: 
   internal:
 
