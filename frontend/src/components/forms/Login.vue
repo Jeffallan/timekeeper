@@ -91,6 +91,7 @@ import { required, email } from "vuelidate/lib/validators"
       return $dirty ? !$error : null
     },
       onSubmit() {
+        console.log(this.$http.defaults)
         this.$v.form.$touch()
         if (this.$v.form.$anyError){
           this.onReset()
