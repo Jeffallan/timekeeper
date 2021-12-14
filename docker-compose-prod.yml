@@ -1,5 +1,6 @@
 version: '3'
-
+#docker-compose -f docker-compose-prod.yml down && docker-compose -f docker-compose-prod.yml up -d
+#workaround for resolver error in nginx
 services:
   postgres:
     image: postgres:11.6

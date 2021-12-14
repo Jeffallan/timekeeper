@@ -18,7 +18,7 @@ services:
       context: .
       dockerfile: ./backend/containers/RestDockerFile
       #TODO do not make migrations in production and change server to guicorn
-      #gunicorn -b 0.0.0.0:8080 --workers=3 wsgi
+      #gunicorn -b 0.0.0.0:8080 --workers=3 api.wsgi
     command: >
       bash -c "python wait_for_postgres.py &&
               ./manage.py makemigrations &&
@@ -61,6 +61,9 @@ services:
     image: node:15.6.0-alpine3.12
     ports:
       - 3000:3000
+    #build:
+    #  context: .
+    #  dockerfile: ./frontend/containers/FrontendDockerFile
     volumes:
       - ./frontend:/code/
     environment: 
@@ -72,21 +75,22 @@ services:
     working_dir: /code/
     stdin_open: true
     entrypoint: "/bin/sh"
-    #TODO change to npm run build
+    ###TODO change to npm run build
     command: "-c \"if [ ! -d \"node_modules\" ]; then npm i; fi; npm run serve \""
+    command: "http-server ./code/dist -p 3000"
     networks: 
       - internal
 
   nginx-proxy: 
     image: jwilder/nginx-proxy
     #TODO remove logging: for production
-    logging:
-      driver: none
+    #logging:
+    #  driver: none
     ports:
       - "80:80"
       - "443:443"
     depends_on: 
-      - frontend
+      #- frontend
       - web
       - postgres
     environment:
