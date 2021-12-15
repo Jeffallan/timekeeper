@@ -202,14 +202,14 @@ class Common(Configuration):
         'DATETIME_FORMAT': '%Y-%m-%dT%H:%M:%S%z',
         'DEFAULT_RENDERER_CLASSES': (
             'rest_framework.renderers.JSONRenderer',
-            'rest_framework.renderers.BrowsableAPIRenderer',
+            #'rest_framework.renderers.BrowsableAPIRenderer',
         ),
         'DEFAULT_PERMISSION_CLASSES': [
             'rest_framework.permissions.IsAuthenticated',
         ],
         'DEFAULT_AUTHENTICATION_CLASSES': (
-            'rest_framework.authentication.SessionAuthentication',
             'rest_framework.authentication.TokenAuthentication',
+            'rest_framework.authentication.SessionAuthentication',
             'rest_framework_simplejwt.authentication.JWTAuthentication',
         ),
         'DEFAULT_FILTER_BACKENDS': (
@@ -251,10 +251,9 @@ class Common(Configuration):
             }
 
 
-    CORS_ORIGIN_WHITELIST = [os.environ.get("CORS_WHITELIST")
-                            ]
+    #CORS_ORIGIN_WHITELIST = [os.environ.get("CORS_WHITELIST")]
     ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]
-
+    CORS_ORIGIN_ALLOW_ALL = True 
     CSRF_COOKIE_SAMESITE="Strict"
     SESSION_COOKIE_SAMESITE="Strict"
     #CSRF_TRUSTED_ORIGINS=[] buy default

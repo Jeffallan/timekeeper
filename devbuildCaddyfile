@@ -1,0 +1,4 @@
+app.local {
+reverse_proxy /api/* api:8000
+file_server
+}
