@@ -5,16 +5,14 @@ services:
     container_name: caddy
     image: caddy:2.4.6-alpine
     restart: unless-stopped
-    depends_on:
-      - frontend
     ports:
             - "80:80"
             - "443:443"
     volumes:
-      - $PWD/devCaddyfile:/etc/caddy/Caddyfile
-      - ./frontend/dist:/srv
-      - caddy_data:/data
-      - caddy_config:/config
+      - $PWD/devbuildCaddyfile:/etc/caddy/Caddyfile
+      - ./caddy_data:/data
+      - ./dist:/srv
+      - ./caddy_config:/config
     networks:
       - web
   postgres:
@@ -52,41 +50,40 @@ services:
     networks: 
       - web
   #TODO remove the mailhog container for production
-  mailhog:
-    logging:
-      driver: none
-    image: mailhog/mailhog:v1.0.0
-    expose:
-      - 1025
-      - 8025
-    ports:
-        - "8025:8025"
-        - "1025:1025"
-    restart: unless-stopped
-    networks: 
-      - web
+  #mailhog:
+  #  logging:
+  #    driver: none
+  #  image: mailhog/mailhog:v1.0.0
+  #  expose:
+  #    - 1025
+  #    - 8025
+  #  ports:
+  #      - "8025:8025"
+  #      - "1025:1025"
+  #  restart: unless-stopped
+  #  networks: 
+  #    - web
 
-  frontend:
-    container_name: frontend
-    #TODO remove logging: for production
-    #logging:
-    #  driver: none
-    image: node:15.6.0-alpine3.12
-    ports:
-      - 3000:3000
-    volumes:
-      - ./frontend:/code/
-
-    env_file:
-      - .ENV
-    restart: unless-stopped
-    working_dir: /code/
-    stdin_open: true
-    entrypoint: "/bin/sh"
-    #TODO change to npm run build
-    command: "-c \"if [ ! -d \"node_modules\" ]; then npm i; fi; npm run serve \""
-    networks: 
-      - web
+  #frontend:
+  #  container_name: frontend
+  #  #TODO remove logging: for production
+  #  #logging:
+  #  #  driver: none
+  #  image: node:15.6.0-alpine3.12
+  #  ports:
+  #    - 3000:3000
+  #  volumes:
+  #    - ./frontend:/code/
+  #  env_file:
+  #    - .ENV
+  #  restart: "no"
+  #  working_dir: /code/
+  #  stdin_open: true
+  #  entrypoint: "/bin/sh"
+  #  #TODO change to npm run build
+  #  command: "-c \"if [ ! -d \"node_modules\" ]; then npm i; fi; npm run build \""
+  #  networks: 
+  #    - web
 
 networks:
   web:
@@ -95,4 +92,3 @@ volumes:
   caddy_data:
     external: true
   caddy_config:
-
