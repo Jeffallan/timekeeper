@@ -3,7 +3,14 @@ version: '3'
 services:
   caddy:
     container_name: caddy
-    image: caddy:2.4.6-alpine
+    #image: caddy:2.4.6-alpine
+    build:
+      context: .
+      args:
+        VUE_APP_BACKEND_URL: https://app.local/api/v1/
+      dockerfile: ./frontend/containers/FrontendDockerFile
+    env_file:
+    - .ENV
     restart: unless-stopped
     ports:
             - "80:80"
@@ -11,7 +18,6 @@ services:
     volumes:
       - $PWD/devbuildCaddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
-      - ./dist:/srv
       - caddy_config:/config
     networks:
       - web
@@ -76,8 +82,8 @@ services:
   #  ports:
   #    - 3000:3000
   #  volumes:
-  #    - dist
   #    - ./frontend:/code/
+  #    - dist:/code/dist/
   #  env_file:
   #    - .ENV
   #  restart: "no"

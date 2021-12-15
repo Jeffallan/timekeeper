@@ -1,10 +1,19 @@
-FROM node:15.6.0-alpine3.12
+FROM node:15.6.0-alpine3.12 as build
 
 WORKDIR ./code
 
 COPY ./frontend ./
 
+ARG VUE_APP_BACKEND_URL
+
+ENV VUE_APP_BACKEND_URL=${VUE_APP_BACKEND_URL}
+
+RUN printenv
+
 RUN npm install
 
-RUN npm run build --dest ../dist
+RUN npm run build
 
+FROM caddy:2.4.6-alpine
+
+COPY --from=build /code/dist /srv
