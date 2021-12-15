@@ -1,6 +1,7 @@
 module.exports = {
     // options...
     devServer: {
-        disableHostCheck: true
-    },
-}
+        compress: true,
+        //disableHostCheck: true,
+        allowedHosts: ["app.local"],
+    }

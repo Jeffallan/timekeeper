@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@pencilpix/vue2-clock-picker": "^0.1.6",
+    "@vue/cli": "^4.5.15",
     "axios": "^0.21.1",
     "bootstrap-vue": "^2.17.3",
     "core-js": "^3.6.5",

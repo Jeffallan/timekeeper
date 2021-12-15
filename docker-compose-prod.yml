@@ -1,5 +1,6 @@
 version: '3'
-
+#docker-compose -f docker-compose-prod.yml down && docker-compose -f docker-compose-prod.yml up -d
+#workaround for resolver error in nginx
 services:
   postgres:
     image: postgres:11.6
@@ -20,7 +21,7 @@ services:
     command: >
       bash -c "python wait_for_postgres.py &&
                ./manage.py migrate &&
-               gunicorn -b 0.0.0.0:8080 --workers=3 wsgi"
+               gunicorn -b 0.0.0.0:8080 --workers=3 api.wsgi"
     volumes:
       - ./backend:/code/
     environment:
