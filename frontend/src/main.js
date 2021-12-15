@@ -11,7 +11,7 @@ import axios from 'axios'
 Vue.config.productionTip = false
 
 Vue.prototype.$http = axios;
-Vue.prototype.$http.defaults.withCredentials = true
+//Vue.prototype.$http.defaults.withCredentials = true
 Vue.prototype.$http.interceptors.request.use(
   config => {
       const token = store.state.users.token
