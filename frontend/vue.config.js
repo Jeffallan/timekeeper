@@ -5,3 +5,4 @@ module.exports = {
         //disableHostCheck: true,
         allowedHosts: ["app.local"],
     }
+}
