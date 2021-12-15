@@ -10,9 +10,9 @@ services:
             - "443:443"
     volumes:
       - $PWD/devbuildCaddyfile:/etc/caddy/Caddyfile
-      - ./caddy_data:/data
+      - caddy_data:/data
       - ./dist:/srv
-      - ./caddy_config:/config
+      - caddy_config:/config
     networks:
       - web
   postgres:
@@ -69,10 +69,14 @@ services:
   #  #TODO remove logging: for production
   #  #logging:
   #  #  driver: none
+  #  #build:
+  #  #  context: .
+  #  #  dockerfile: ./frontend/containers/FrontendDockerFile
   #  image: node:15.6.0-alpine3.12
   #  ports:
   #    - 3000:3000
   #  volumes:
+  #    - dist
   #    - ./frontend:/code/
   #  env_file:
   #    - .ENV
@@ -81,7 +85,7 @@ services:
   #  stdin_open: true
   #  entrypoint: "/bin/sh"
   #  #TODO change to npm run build
-  #  command: "-c \"if [ ! -d \"node_modules\" ]; then npm i; fi; npm run build \""
+  #  command: "-c \"if [ ! -d \"node_modules\" ]; then npm i; fi; npm run build; \""
   #  networks: 
   #    - web
 
@@ -92,3 +96,4 @@ volumes:
   caddy_data:
     external: true
   caddy_config:
+  dist:
