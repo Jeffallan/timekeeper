@@ -13,7 +13,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    #steps:
+    steps:
     #  - uses: actions/checkout@v1
     #  - name: Copy file via scp
     #    uses: appleboy/scp-action@master
