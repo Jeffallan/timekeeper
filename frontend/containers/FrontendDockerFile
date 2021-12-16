@@ -8,8 +8,6 @@ ARG VUE_APP_BACKEND_URL
 
 ENV VUE_APP_BACKEND_URL=${VUE_APP_BACKEND_URL}
 
-RUN printenv
-
 RUN npm install
 
 RUN rm -rf ./node_modules/.cache

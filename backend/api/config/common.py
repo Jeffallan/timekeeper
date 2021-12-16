@@ -253,7 +253,7 @@ class Common(Configuration):
 
     #CORS_ORIGIN_WHITELIST = [os.environ.get("CORS_WHITELIST")]
     ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS")]
-    CORS_ORIGIN_ALLOW_ALL = True 
+    #CORS_ORIGIN_ALLOW_ALL = True 
     CSRF_COOKIE_SAMESITE="Strict"
     SESSION_COOKIE_SAMESITE="Strict"
     #CSRF_TRUSTED_ORIGINS=[] buy default
