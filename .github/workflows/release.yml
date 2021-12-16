@@ -2,9 +2,9 @@ name: Deploy
 
 on:
   push:
-  branch: main
-  tags:
-    - "v*"
+    branch: main
+    tags:
+      - "v*"
 
   workflow_dispatch:
 
