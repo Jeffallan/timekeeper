@@ -25,7 +25,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           source: "."
           target: ${{ secrets.DIR }}
-          command_timeout: 30
+          command_timeout: 30m
 
       - name: Executing remote build.
         uses: appleboy/ssh-action@master
@@ -34,5 +34,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSHKEY }}
-          command_timeout: 30
+          command_timeout: 30m
           script: ./build.sh
