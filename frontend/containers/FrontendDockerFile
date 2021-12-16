@@ -12,6 +12,8 @@ RUN printenv
 
 RUN npm install
 
+RUN rm -rf ./node_modules/.cache
+
 RUN npm run build
 
 FROM caddy:2.4.6-alpine
