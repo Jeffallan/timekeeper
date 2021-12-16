@@ -48,7 +48,7 @@ export default {
         },
         data: () => {
           return {
-            title: "NavBar",
+            title: "Nav",
             urls: [
                 { name: 'Home', path: '/', },
                 { name: "Directory", path: "/users"},

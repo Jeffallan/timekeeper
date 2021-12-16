@@ -1,4 +1,4 @@
-app.local {
+raventi.me {
 reverse_proxy /api/* api:8000
 file_server
 }

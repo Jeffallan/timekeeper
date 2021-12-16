@@ -39,12 +39,11 @@ services:
       context: .
       dockerfile: ./backend/containers/RestDockerFile
       #TODO do not make migrations in production and change server to guicorn
-      #gunicorn -b 0.0.0.0:8080 --workers=3 wsgi
+      #gunicorn -b 0.0.0.0:8080 --workers=3 api.wsgi
     command: >
       bash -c "python wait_for_postgres.py &&
-              ./manage.py makemigrations &&
                ./manage.py migrate &&
-               ./manage.py runserver 0.0.0.0:8000"
+               gunicorn -b 0.0.0.0:8080 --workers=3 api.application"
     volumes:
       - ./backend:/code/
     env_file:
@@ -55,45 +54,6 @@ services:
       - postgres
     networks: 
       - web
-  #TODO remove the mailhog container for production
-  #mailhog:
-  #  logging:
-  #    driver: none
-  #  image: mailhog/mailhog:v1.0.0
-  #  expose:
-  #    - 1025
-  #    - 8025
-  #  ports:
-  #      - "8025:8025"
-  #      - "1025:1025"
-  #  restart: unless-stopped
-  #  networks: 
-  #    - web
-
-  #frontend:
-  #  container_name: frontend
-  #  #TODO remove logging: for production
-  #  #logging:
-  #  #  driver: none
-  #  #build:
-  #  #  context: .
-  #  #  dockerfile: ./frontend/containers/FrontendDockerFile
-  #  image: node:15.6.0-alpine3.12
-  #  ports:
-  #    - 3000:3000
-  #  volumes:
-  #    - ./frontend:/code/
-  #    - dist:/code/dist/
-  #  env_file:
-  #    - .ENV
-  #  restart: "no"
-  #  working_dir: /code/
-  #  stdin_open: true
-  #  entrypoint: "/bin/sh"
-  #  #TODO change to npm run build
-  #  command: "-c \"if [ ! -d \"node_modules\" ]; then npm i; fi; npm run build; \""
-  #  networks: 
-  #    - web
 
 networks:
   web:
