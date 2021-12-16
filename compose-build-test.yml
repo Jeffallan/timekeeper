@@ -43,7 +43,7 @@ services:
     command: >
       bash -c "python wait_for_postgres.py &&
                ./manage.py migrate &&
-               gunicorn -b 0.0.0.0:8080 --workers=3 api.application"
+               gunicorn -b 0.0.0.0:8080 --workers=3 api.wsgi"
     volumes:
       - ./backend:/code/
     env_file:
