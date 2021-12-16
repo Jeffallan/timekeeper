@@ -48,7 +48,7 @@ export default {
         },
         data: () => {
           return {
-            title: "Nav",
+            title: "Timekeeper",
             urls: [
                 { name: 'Home', path: '/', },
                 { name: "Directory", path: "/users"},
